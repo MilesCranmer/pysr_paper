@@ -1,6 +1,6 @@
 <div align="center">
 
-# Interpretable Machine Learning for Science with PySR & SymbolicRegression.jl
+# Interpretable Machine Learning for Science <br> with PySR & SymbolicRegression.jl
 
 </div>
 
@@ -16,8 +16,11 @@
 </a>
 </p>
 
-This repository holds the source code for the [PySR](https://github.com/MilesCranmer/PySR) & [SymbolicRegression.jl](https://github.com/MilesCranmer/SymbolicRegression.jl) paper.
-Feel free to submit a PR to suggest any changes to the paper!
+This repository holds the source code for the [PySR](https://github.com/MilesCranmer/PySR) & [SymbolicRegression.jl](https://github.com/MilesCranmer/SymbolicRegression.jl) paper,
+including LaTeX, raw data, and plotting code.
+
+Click on the [PDF](https://github.com/MilesCranmer/pysr_paper/raw/main-pdf/ms.pdf) button to download the live copy, and
+feel free to submit a PR to suggest any changes to the paper!
 
 ---
 
