@@ -1,6 +1,7 @@
+<p align="center">
+
 # PySR and SymbolicRegression.jl
 
-<p align="center">
 <a href="https://github.com/MilesCranmer/pysr_paper_syw/actions/workflows/build.yml">
 <img src="https://github.com/MilesCranmer/pysr_paper_syw/actions/workflows/build.yml/badge.svg?branch=main" alt="Article status"/>
 </a>
