@@ -1,0 +1,2 @@
+yes
+operon_bode_seed=1_v45_results.txt

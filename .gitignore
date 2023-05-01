@@ -1,0 +1,38 @@
+# Snakemake and showyourwork temporaries
+**/.snakemake
+**/.showyourwork*
+
+# Showyourwork output files
+/*.pdf
+report.html
+arxiv.tar.gz
+
+# Figure output
+src/tex/figures/*
+
+# Miscellaneous
+__pycache__
+src/tex/lineno.sty
+src/tex/lineno.sty
+src/tex/showyourwork.tex
+src/tex/showyourwork-logo.pdf
+src/tex/showyourwork.otf
+src/tex/xstring.tex
+src/tex/figures
+src/tex/listofitems.tex
+src/tex/output
+src/tex/showyourwork-metadata.tex
+src/tex/showyourwork.sty
+src/tex/xstring.sty
+
+# macOS:
+.DS_Store
+srbench/data
+srbench/results
+hall_of_fame*
+**/*.out
+**/*disBatch*
+**/*.log
+**/slurm*.csh
+**/slurm*.sh
+srbench-comp/results

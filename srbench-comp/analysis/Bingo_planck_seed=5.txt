@@ -1,0 +1,2 @@
+no
+Bingo_planck_seed=5_v47_results.txt

@@ -1,0 +1,2 @@
+yes
+pysr_newton_seed=4_v44_results.txt

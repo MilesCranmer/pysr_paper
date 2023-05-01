@@ -1,0 +1,2 @@
+yes
+pysr_bode_seed=5_v44_results.txt

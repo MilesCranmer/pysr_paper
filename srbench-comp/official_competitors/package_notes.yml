@@ -1,0 +1,32 @@
+Bingo:
+  gives_pareto: "yes"
+
+eql:
+  gives_pareto: "no"
+
+gpzgd:
+  gives_pareto: "no"
+
+operon:
+  gives_pareto: "yes"
+
+pysr:
+  gives_pareto: "yes"
+
+uDSR:
+  gives_pareto: "yes"
+
+geneticengine:
+  gives_pareto: "no"
+
+E2ET:
+  gives_pareto: "no"
+
+nsga-dcgp:
+  gives_pareto: "yes"
+
+PS-Tree:
+  gives_pareto: "no"
+
+QLattice:
+  gives_pareto: "yes"

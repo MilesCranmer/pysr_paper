@@ -1,0 +1,2 @@
+yes
+pysr_ideal_gas_seed=5_v44_results.txt

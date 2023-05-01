@@ -1,0 +1,2 @@
+no
+Bingo_ideal_gas_seed=4_v47_results.txt

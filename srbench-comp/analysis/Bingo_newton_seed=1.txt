@@ -1,0 +1,2 @@
+no
+Bingo_newton_seed=1_v47_results.txt

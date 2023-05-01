@@ -1,0 +1,507 @@
+# 1,Kepler's Third Law,
+# 2,\begin{tabular}{l}Newton's law of\\universal gravitation\end{tabular},$\mathbf F= G \frac{m_1 m_2}{\abs{\mathbf{r}_{12}}}$,$m_i$ mass; $r$ distance,$F_x$,,,
+# 3,Hubble's Law 1929,$v = H_0 D$,$v$ velocity; $D$ distance,$v$,,,
+# 5,Tully-Fisher Relation,$L \propto \Delta V(0)^{2.5}$,$L$ luminosity; $\Delta V(0)$ max velocity dispersion,$L$,,\cite{tullyNewMethodDetermining1977} Fig 5. a),
+# 6,Leavitt's Law,$M = \alpha\log_{10}(P) + \delta$,$M$ magnitude; $P$ period,$M$,,\cite{leavittPeriods25Variable1912}\cite{breuvalInfluenceMetallicityLeavitt2021},alpha=-2.704; delta=-3.252 (V-band. Note that log10(P) needs to be subtracted by 0.7!)
+# 7,Schechter Luminosity Function,$ n = \frac{\phi^\ast}{L^\ast}(\frac{L}{L^\ast})^{\alpha} e^{-L/L^\ast} $,$n$ number density; $L$ luminosity,$n$,,,
+# 12,Ideal gas law,,,,,,
+# 14,Planck's law,,,,,,
+# 16,Rydberg formula,,,,,,
+# Bode's law.
+
+# All possible columns in this YAML file for a problem:
+# [equation, target, variables, citations[original, used], datafile]
+# if citations->used is not given, original is assumed to be used.
+
+# We compare against the modern constant.
+
+# SI units assumed unless otherwise specified.
+# Data generation is logarithmic unless otherwise specified.
+# Noise scale is estimated by eye.
+
+problems:
+
+  Hubble's law:
+    key: hubble
+    equation:
+      original: v = H_0 D
+      target: v
+      reduced: v = (\cdot) D
+      reduced_enum: v = (\cdot) x_0
+    variables:
+      v: velocity, km/s
+      target: velocity, km/s
+      H_0: Hubble constant
+      D: distance, Mpc
+    constants:
+      H_0:
+        value: 73.3
+        units: (km/s)/Mpc
+        type: new
+        citation: riessComprehensiveMeasurementLocal2022
+    citations:
+      original: hubbleRelationDistanceRadial1929
+    figure:
+      filename: hubble.png
+    use: data
+    data_generator:
+      target: v
+      callable: H0 * D
+      args: [D]
+      constants:
+        H0: 73.3
+      ranges:
+        D: [1, 20, 'linear']
+      size: 30
+      noise:
+        scale: 100
+        type: absolute
+    data:
+      csv:
+        filename: hubble.csv
+        transform:
+          D: D
+          target: v
+
+
+  Kepler's Third Law:
+    key: kepler
+    equation:
+      original: P^2 \propto a^3
+      taken: P^2 = k a^3
+      target: P
+      reduced: P = (\cdot) \sqrt{a^3}
+      reduced_enum: P = (\cdot) \sqrt{x_0^3}
+    variables:
+      P: period, days
+      target: period, days
+      a: semi-major axis, AU
+    constants:
+      # When k is irrelevant, we just set k=None.
+      k: None
+    citations:
+      original: keplerHarmonicesMundi1619
+    figure:
+      filename: kepler.png
+    use: data
+    data:
+      # Planet | Mean distance to sun (AU) | Period (days) | {\textstyle {\frac {R^{3}}{T^{2}}}}{\textstyle {\frac {R^{3}}{T^{2}}}} (10-6 AU3/day2)
+      # Mercury 0.389 87.77 7.64
+      # Venus 0.724 224.70 7.52
+      # Earth 1 365.25 7.50
+      # Mars 1.524 686.95 7.50
+      # Jupiter 5.20 4332.62 7.49
+      # Saturn 9.510 10759.2 7.43
+      target:
+        - 87.77
+        - 224.70
+        - 365.25
+        - 686.95
+        - 4332.62
+        - 10759.2
+      inputs:
+        a:
+          - 0.389
+          - 0.724
+          - 1
+          - 1.524
+          - 5.20
+          - 9.510
+    data_generator:
+      target: P
+      callable: mp.sqrt(k * a**3)
+      args: [a]
+      constants:
+        k: None
+      ranges:
+        a: [0.38, 9.5]
+      size: 10
+      noise:
+        scale: 0.002
+        type: relative
+
+
+  Newton's law of universal gravitation:
+    key: newton
+    equation:
+      original: \mathbf{F} = G \frac{m_1 m_2}{r^2} \hat{r}
+      target: F_x
+      reduced: \log(F_x) = \log(m_1 m_2) - 2\log(r) + (\cdot)
+      reduced_enum: \log(F_x) = \log(x_1 x_2) - 2 \log(x_0) + (\cdot)
+    variables:
+      F: force, N
+      F_x: x-component of force, N
+      target: x-component of force, N
+      m_1: mass of first object, kg
+      m_2: mass of second object, kg
+      r: distance, m
+    citations:
+      original: newtonPhilosophiaeNaturalisPrincipia1687
+    constants:
+      G:
+        value: 6.67408e-11
+        units: m^3 kg^-1 s^-2
+        type: new
+    data_generator:
+      target: F_{mag}
+      callable: G * m1 * m2 / r**2
+      args: [r, m1, m2]
+      constants:
+        G: 6.67408e-11
+      ranges:
+        r: [3.7e8, 7.37593e12] # (earth->moon; sun->pluto)
+        m1: [1.3e22, 2e30]  # (pluto up to sun)
+        m2: [1.3e22, 2e30]
+      size: 30
+      noise:
+        scale: None  # Use no scale for just 10% noise.
+        type: relative
+    plot:
+      yscale: log
+      xscale: log
+      cscale: log
+
+  Planck's law:
+    key: planck
+    equation:
+      original: B = \frac{2 h \nu^3}{c^2} \frac{1}{e^{h \nu/k_B T} - 1}
+      target: B
+      # Only nu, T vary:
+      reduced: \log(B) = (\cdot) + 3\log(\nu) - \log(\exp((\cdot)\nu/T) - 1)
+      reduced_enum: \log(B) = (\cdot) + 3\log(x_0) - \log(\exp((\cdot)x_0/x_1) - 1)
+    variables:
+      B: spectral radiance, W sr$^{-1}$ m$^{-2}$ Hz$^{-1}$
+      target: spectral radiance, W sr$^{-1}$ m$^{-2}$ Hz$^{-1}$
+      \nu: frequency, Hz
+      nu: frequency, Hz
+      T: temperature
+    constants:
+      h: 6.62607004e-34  # J s
+      k_B: 1.38064852e-23  # J/K
+      c: 299792458  # m/s
+    citations:
+      original: planckTheoryHeatRadiation1914
+    data_generator:
+      target: B
+      callable: 2 * h * nu**3 / (c**2) * (1 / (mp.exp(h * nu / (k_B * T)) - 1))
+      args: [nu, T]
+      constants:
+        h: 6.62607004e-34
+        k_B: 1.38064852e-23
+        c: 299792458
+      ranges:
+        nu: [1e9, 1e16, 'log']
+        T: [100, 6000, 'log']
+      size: 100
+      noise:
+        scale: None  # Use no scale for just 10% noise.
+        type: relative
+    plot:
+      yscale: log
+      xscale: log
+      ylim: [1e-20, 1]
+
+
+  Tully-Fisher Relation:
+    key: tully
+    equation:
+      original: L \propto \Delta V(0)^{2.5}
+      taken: L = k \Delta V(0)^2.5
+      target: L
+      reduced: L = (\cdot) \Delta \sqrt{V(0)^5}
+      reduced_enum: L = (\cdot) \sqrt{x_0^5}
+    constants:
+      k: None
+    variables:
+      L: luminosity, W
+      target: luminosity, W
+      \Delta V(0): max velocity dispersion, km/s
+      DV: max velocity dispersion, km/s
+    citations:
+      original: tullyNewMethodDetermining1977
+    figure:
+      filename: tully.png
+      description: "Figure 5. a) from Tully et al. (1977)."
+    use: data
+    data_generator:
+      target: L
+      callable: k * DV**2.5 + k2
+      args: [DV]
+      constants:
+        # DV to absolute magnitude:
+        # point 1:
+        # 102.77874677271123 km/s => -16.115966998516885 mag
+        # point 2:
+        # 582.4380556452252 km/s => -20.802652729549468 mag.
+        # 102.77.... km/s => 1.06993829e+33 Watts
+        # Calculated manually, in units of Lsun / (km/s)^2.5.
+        k: 26.1
+        k2: None
+      ranges:
+        DV: [100, 700, 'linear']  # (km/s)
+      size: 18
+      noise:
+        scale: 30
+        type: absolute
+        var: DV
+    data:
+      csv:
+        filename: tully.csv
+        transform:
+          DV: DV
+          target: 3.828e26 * 10 ** (-0.4 * M) # (Bolometric) Units in Watts.
+
+  Leavitt's Law:
+    key: leavitt
+    equation:
+      original: M = \alpha\log_{10}(P) + \delta
+      target: M
+      reduced: M = (\cdot)\log_{10}(P) + (\cdot)
+      reduced_enum: M = (\cdot)\log_{10}(x_0) + (\cdot)
+    variables:
+      M: magnitude
+      target: magnitude
+      P: period, days
+    constants:
+      alpha: -2.084  # 1 / -0.48
+      delta: 15.65
+    citations:
+      original: leavittPeriods25Variable1912
+      # used: breuvalInfluenceMetallicityLeavitt2021
+      # --> alpha: -2.704
+      #     delta: -3.252
+    figure:
+      filename: leavitt.jpeg
+      description: "From 1912 paper by Leavitt. y-axis is magnitude at maxima and minima. x-axis is logarithm of period in days."
+    use: data
+    data_generator:
+      target: M
+      callable: mp.log10(P) * alpha + delta
+      args: [P]
+      constants:
+        alpha: -2.084
+        delta: 15.65
+      ranges:
+        P: [1.25, 158, 'log']
+      size: 26
+      noise:
+        scale: 0.4
+        type: absolute
+      # Curve:
+      # 0.004296875000000033, 15.605235389610389
+      # 2.1957031250000005, 11.075324675324676
+    data:
+      csv:
+        filename: leavitt.csv
+        transform:
+          P: 10 ** logP
+          target: M
+    plot:
+      xscale: log
+      ylim: [16, 10]
+
+  Schechter function:
+    key: schechter
+    equation:
+      original: n = \frac{\phi_\ast}{L_\ast} (\frac{L}{L_\ast})^{\alpha} e^{-\frac{L }{ L_\ast}}
+      target: n
+      reduced: \log(n) = (\cdot)\log(L) - (\cdot)L + (\cdot)
+      reduced_enum: \log(n) = (\cdot)\log(x_0) - (\cdot)x_0 + (\cdot)
+    variables:
+      n: number density
+      target: number density
+      L: luminosity, $L_\odot$
+    constants:
+      \alpha: -1.20
+      \phi_\ast: 0.002
+      L_\ast: 2.5e8 # Lsun
+      # We take h_{0.5} as 1:
+      ## \phi_\ast # h_{0.5}^3/Mpc^3; where h_{0.5} = H_0/50.
+      ## M_\ast: -21.0 + 5 log(h_{0.5})
+    citations:
+      original: pressFormationGalaxiesClusters1974
+    figure:
+      filename: schechter.png
+    data_generator:
+      target: n
+      callable: (phi_ast/L_ast) * (L / L_ast)**alpha * mp.exp(-L / L_ast)
+      args: [L]
+      constants:
+        alpha: -1.20
+        phi_ast: 0.002
+        L_ast: 2.5e8
+      ranges:
+        L: [1e6, 3e9, 'log']
+      size: 27
+      noise:
+        scale: 0.2  # Made up
+        type: relative
+    plot:
+      xscale: log
+      yscale: log
+
+  Bode's law:
+    key: bode
+    # For Bode's law, we give actual data instead of generated stuff.
+    equation:
+      original: a = 0.4 + 0.3 (2^n)
+      target: a
+      reduced: \log(a) = \log((\cdot) + (\cdot)\exp(n))
+      reduced_enum: \log(a) = \log((\cdot) + (\cdot)\exp(x_0))
+    variables:
+      a: semi-major axis, AU
+      n: planet index
+      target: semi-major axis
+    citations:
+      original: bonnetContemplationNature1764
+    use: data # Can choose which dataset to use
+    data:
+      # semi-major axis of each planet, with some dwarfs
+      target:
+        - 0.39
+        - 0.72
+        - 1.00
+        - 1.52
+        - 2.77
+        - 5.20
+        - 9.58
+        - 19.22
+        # Neptune and pluto are skipped.
+        # Note that the pattern is okay, if pluto is included, but not Neptune.
+      inputs:
+        n:
+          - -1000 # we use -1000 instead of -inf.
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+    alternate_data:
+      # This is the data without any planets skipped.
+      target:
+        - 0.39
+        - 0.72
+        - 1.00
+        - 1.52
+        - 2.77
+        - 5.20
+        - 9.58
+        - 19.22
+        - 30.07
+        - 39.48
+      inputs:
+        n:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+    plot:
+      yscale: log
+      xlim: [-1, 7]
+
+  Ideal gas law:
+    key: ideal_gas
+    equation:
+      original: P = \frac{nRT}{V}
+      target: P
+      reduced: \log(P) = (\cdot) + \log(n T) - \log(V)
+      reduced_enum: \log(P) = (\cdot) + \log(x_0 x_1) - \log(x_2)
+    variables:
+      P: pressure
+      target: pressure
+      n: number density
+      T: temperature
+      V: volume
+    constants:
+      R: 8.314  # J/mol/K
+    citations:
+      original: clapeyronMemoirePuissanceMotrice1835
+    data_generator:
+      target: P
+      callable: n * R * T / V
+      args: [n, T, V]
+      constants:
+        R: 8.314
+      ranges:
+        n: [1, 100, 'linear']
+        T: [300, 400, 'linear']
+        V: [1, 100, 'linear']
+      size: 30
+      noise:
+        scale: None  # Use no scale for just 10% noise.
+        type: relative
+    plot:
+      yscale: log
+      xscale: log
+
+  Rydberg formula:
+    key: rydberg
+    equation:
+      original: \frac{1}{\lambda} = R_H(\frac{1}{n_1^2} - \frac{1}{n_2^2})
+      target: \lambda
+      reduced: \log(\lambda) = (\cdot) - \log(1/n_1^2 - 1/n_2^2)
+      reduced_enum: \log(\lambda) = (\cdot) - \log(1/x_0^2 - 1/x_1^2)
+    variables:
+      \lambda: wavelength, m
+      target: wavelength, m
+      n_1: principal quantum number
+      n_2: principal quantum number after the transition
+    constants:
+      R_H: 1.097e7  # m^-1
+    citations:
+      original: rydbergResearchesConstitutionSpectres1889
+    data_generator:
+      target: lambda
+      callable: 1 / (R_H * (1 / n_1**2 - 1 / n_2**2))
+      args: [n_1, n_2]
+      constants:
+        R_H: 1.097e7
+      custom_generation: |
+        n_1 = rstate.randint(1, 7)
+        n_2 = rstate.randint(n_1 + 1, 8)
+        n_1 = float(n_1)
+        n_2 = float(n_2)
+        {'n_1': n_1, 'n_2': n_2}
+      size: 50
+      noise:
+        scale: 0.01
+        type: relative
+    plot:
+      yscale: log
+
+
+
+
+
+
+## Alpha version:
+# - [x] Hubble
+# - [x] Keplers
+# - [x] Newton
+# - [x] Tully
+# - [x] Leavitt
+# - [x] Schechter
+# - [x] Bode's law
+# - [x] Ideal gas law
+# - [x] Planck law
+# - [x] Rydberg formula
+
+
+# model = PySRRegressor(
+#     binary_operators="+ * - / ^".split(" "),
+#     unary_operators=[],
+#     hofMigration=False,
+#     fractionReplaced=0.02,
+#     maxsize=20,
+#     loss="loss(x, y) = abs(x-y)",
+#     constraints={"^": (-1, 3)},
+#     tournament_selection_p=0.9,
+# )
