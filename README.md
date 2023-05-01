@@ -1,14 +1,17 @@
+<div align="center">
+
+# Interpretable Machine Learning for Science with PySR & SymbolicRegression.jl
+
+</div>
+
 <p align="center">
-
-# PySR and SymbolicRegression.jl
-
-<a href="https://github.com/MilesCranmer/pysr_paper_syw/actions/workflows/build.yml">
-<img src="https://github.com/MilesCranmer/pysr_paper_syw/actions/workflows/build.yml/badge.svg?branch=main" alt="Article status"/>
+<a href="https://github.com/MilesCranmer/pysr_paper/actions/workflows/build.yml">
+<img src="https://github.com/MilesCranmer/pysr_paper/actions/workflows/build.yml/badge.svg?branch=main" alt="Article status"/>
 </a>
-<a href="https://github.com/MilesCranmer/pysr_paper_syw/raw/main-pdf/arxiv.tar.gz">
+<a href="https://github.com/MilesCranmer/pysr_paper/raw/main-pdf/arxiv.tar.gz">
 <img src="https://img.shields.io/badge/article-tarball-blue.svg?style=flat" alt="Article tarball"/>
 </a>
-<a href="https://github.com/MilesCranmer/pysr_paper_syw/raw/main-pdf/ms.pdf">
+<a href="https://github.com/MilesCranmer/pysr_paper/raw/main-pdf/ms.pdf">
 <img src="https://img.shields.io/badge/article-pdf-blue.svg?style=flat" alt="Read the article"/>
 </a>
 </p>
