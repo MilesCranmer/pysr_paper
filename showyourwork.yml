@@ -51,19 +51,19 @@ scripts:
 # Display of the `showyourwork` stamp on first page
 stamp:
   # Show the stamp?
-  enabled: false
+  enabled: true
   # Stamp angle in degrees
-  angle: -20.0
+  angle: 0.0
   # Stamp size in inches
   size: 0.5
   # Horizontal position in inches from right edge of paper
-  xpos: 0.75
+  xpos: 4.25
   # Vertical position in inches from top edge of paper
   ypos: 0.75
   # Display of the repo URL in the stamp
   url:
     # Show the URL?
-    enabled: true
+    enabled: false
     # Maximum URL length to display
     maxlen: 40
 

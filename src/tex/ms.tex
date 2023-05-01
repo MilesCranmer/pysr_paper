@@ -132,13 +132,18 @@
 \newcommand\myhref[2]{\textsf{\textcolor{blue}{\href{#1}{#2}}}}
 \newcommand\giturl{\myhref{https://github.com/MilesCranmer/pysr_paper}{github.com/MilesCranmer/pysr\_paper}}
 
-
 \titlehead{
-  \parbox{\textwidth}{
-    \emph{PySR \& SymbolicRegression.jl}
-    \hfill
-    \giturl
-  }
+    \begin{center}
+    \parbox{0.3\textwidth}{
+        \hfill
+        \emph{PySR \& SymbolicRegression.jl}
+    }
+    \hspace{2in}
+    \parbox{0.3\textwidth}{
+        \giturl
+        \hfill
+    }
+    \end{center}
 }
 
 \title{Interpretable Machine Learning for Science \\ with PySR and SymbolicRegression.jl}
@@ -162,7 +167,6 @@ This benchmark measures recovery of historical empirical equations from original
 \end{abstract}
 \end{@twocolumnfalse}
 ]
-
 
 
 
