@@ -414,8 +414,8 @@ Thus, this is a simple way to punish complexities adaptively by how frequent the
 This encourages the evolutionary search to explore the problem from simple, less-accurate expressions, as well as from complex, more accurate expressions.
 This qualitatively seems to help alleviate situations where the search specializes too early in the wrong functional form, and can only seem to make small iterations to it, and is discouraged from starting from scratch.
 
-Pseudocode for the main loop of \pysr is given in \cref{alg:pysr}.
-\Cref{alg:evolve} gives pseudocode for the main \textit{evolve-simplify-optimize loop}.
+Pseudocode for the outer loop loop of \pysr is given in \cref{alg:pysr}, which includes the migration steps shown in \cref{fig:migration}.
+\Cref{alg:evolve} gives pseudocode for the main \textit{evolve-simplify-optimize loop}, formalizing parts of the cartoon in \cref{fig:evolution_loop}.
 \Cref{alg:mutate} outlines the set of mutations, supplemented with simulated annealing.
 Finally, \cref{alg:tournament} describes the tournament selection strategy.
 
