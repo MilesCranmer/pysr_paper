@@ -155,15 +155,14 @@
 
 
 
-\twocolumn[
-\begin{@twocolumnfalse}
+\twocolumn[\begin{@twocolumnfalse}
 \maketitle
 \begin{abstract}
 \pysr is an open-source library for practical \textit{symbolic regression}, a type of machine learning which aims to discover human-interpretable symbolic models.
 \pysr was developed to democratize and popularize symbolic regression for the sciences, and is built on a high-performance distributed backend, a flexible search algorithm, and interfaces with several deep learning packages.
 \pysr's internal search algorithm is a multi-population evolutionary algorithm, which consists of a unique evolve-simplify-optimize loop, designed for optimization of unknown scalar constants in newly-discovered empirical expressions.
 \pysr's backend is an extremely optimized Julia library \pysrjl, which can be used directly from Julia. It is capable of fusing user-defined operators into SIMD kernels at runtime, performing automatic differentiation, and distributing populations of expressions to thousands of cores across a cluster.
-In describing this software, \we also introduce a new benchmark, ``\textit{EmpiricalBench},’’ to quantify the applicability of symbolic regression algorithms in science.
+In describing this software, we also introduce a new benchmark, ``\textit{EmpiricalBench},’’ to quantify the applicability of symbolic regression algorithms in science.
 This benchmark measures recovery of historical empirical equations from original and synthetic datasets.
 \end{abstract}
 \end{@twocolumnfalse}
@@ -198,7 +197,7 @@ Now, this first step---discovering empirical relationships from data or based on
 In modern, high-dimensional datasets, it seems an impossible task to discover simple symbolic relationships without the use of automated tools.
 
 This brings us to an optimization problem known ``symbolic regression,'' or SR.
-In this paper, \we describe an algorithm for performing \sr, and describe software dedicated to equation discovery in the sciences.
+In this paper, we describe an algorithm for performing \sr, and describe software dedicated to equation discovery in the sciences.
 
 \paragraph{Symbolic Regression.}
 \Sr describes a supervised learning task where the model space is spanned by analytic expressions.
@@ -220,7 +219,7 @@ In addition to other early work such as~\cite{debFastElitistNondominated2000,deb
 there have recently been a significant number of exciting new developments in \sr as well as \sr for science.
 These have largely been focused on genetic algorithms on expressions represented as trees, and include core advances to genetic algorithms, such as~\cite{lacavaEpsilonLexicaseSelectionRegression2016,lacavaProbabilisticMultiobjectiveAnalysis2018}, which propose modified strategies for selecting an individual to mutate and~\cite{virgolinScalableGeneticProgramming2017,virgolinImprovingModelbasedGenetic2021} which use an adaptive form of recombination based on emerging statistical patterns.
 New strategies for \sr altogether have also been developed:
-in particular, \our previous work~\cite{cranmerLearningSymbolicPhysics2019,cranmerDiscoveringSymbolicModels2020,cranmerDisentangledSparsityNetworks2021} proposes \sr as a way of interpreting a neural network.
+in particular, our previous work~\cite{cranmerLearningSymbolicPhysics2019,cranmerDiscoveringSymbolicModels2020,cranmerDisentangledSparsityNetworks2021} proposes \sr as a way of interpreting a neural network.
 Neural networks can efficiently find low-dimensional patterns in high-dimensional data, and so this mixed strategy also presents a way of performing \sr on high-dimensional or non-tabular data.
 
 Additional techniques include~\cite{jinBayesianSymbolicRegression2020,guimeraBayesianMachineScientist2020} which propose a Markov chain Monte Carlo-like sampling for \sr;
@@ -236,7 +235,7 @@ This strategy can also be combined with deep learning~\citep[e.g., ][]{luschDeep
 Additional techniques include mixed integer nonlinear programming~\citep{cozadGlobalMINLPApproach2018} and greedy tree searches~\citep{defrancaGreedySearchTree2018}, and combining theory as a type of constraint over the space of models~\cite{cornelioAIDescartesCombining2021}.
 
 
-However, here \we argue that many existing algorithms lack certain features which make them practical in a broad setting for discovering interpretable equations in science.
+However, here we argue that many existing algorithms lack certain features which make them practical in a broad setting for discovering interpretable equations in science.
 The requirements for ``scientific \sr'' are significantly more difficult than for \sr applied to synthetic datasets, which many algorithms are implicitly trained on via synthetic benchmarks.
 We list these below.
 
@@ -269,15 +268,15 @@ For more discussion, the references~\cite{price-whelanAstropyProjectBuilding2018
 
 
 \paragraph{Contribution.}
-In this paper, \we introduce \pysr, a Python and Julia package for Scientific Symbolic Regression. The Python package is available under \texttt{pysr} on PyPI and Conda\footnote{\myhref{https://github.com/MilesCranmer/PySR}{github.com/MilesCranmer/PySR}} and the Julia library under \texttt{SymbolicRegression}\footnote{\myhref{https://github.com/MilesCranmer/SymbolicRegression.jl}{github.com/MilesCranmer/SymbolicRegression.jl}} on the Julia package registry.
+In this paper, we introduce \pysr, a Python and Julia package for Scientific Symbolic Regression. The Python package is available under \texttt{pysr} on PyPI and Conda\footnote{\myhref{https://github.com/MilesCranmer/PySR}{github.com/MilesCranmer/PySR}} and the Julia library under \texttt{SymbolicRegression}\footnote{\myhref{https://github.com/MilesCranmer/SymbolicRegression.jl}{github.com/MilesCranmer/SymbolicRegression.jl}} on the Julia package registry.
 Every part of \pysr is written with scientific discovery in mind, as the entire point of creating this package was to enable the authors of this paper to use this tool in their own field for equation discovery.
 All of the requirements of discovering an empirical equation for science, as listed above, are satisfied by \pysr.
-\We discuss this in detail in the following sections.
+We discuss this in detail in the following sections.
 
 \section{Methods}
 \label{sec:methods}
 
-First, \we give an in-depth discussion of the internal algorithm in \pysr in \cref{sec:algorithm}, and then describe the software implementation in \cref{sec:software}.
+First, we give an in-depth discussion of the internal algorithm in \pysr in \cref{sec:algorithm}, and then describe the software implementation in \cref{sec:software}.
 We then discuss a few additional implementation features in \cref{sec:interfaces}, \cref{sec:custom_operators}, and \cref{sec:custom_losses}.
 
 
@@ -339,37 +338,37 @@ Thus, the probability will roughly be $p, p(1-p), p(1-p)^2, \ldots$ for the firs
 \end{easylist}
 
 This algorithm is computationally efficient and allows for massive parallelization by splitting step~\ref{step:sampling} into groups of individuals which can evolve independently, with asynchronous ``migration'' between the groups.
-For the first of the modifications, \we replace the eldest member of a population in step~\ref{step:mutate}, rather than the individual with the lowest fitness, which is known as ``age-regularized'' evolution~\cite{realRegularizedEvolutionImage2019}.
+For the first of the modifications, we replace the eldest member of a population in step~\ref{step:mutate}, rather than the individual with the lowest fitness, which is known as ``age-regularized'' evolution~\cite{realRegularizedEvolutionImage2019}.
 We record the age from the Unix time at which the individual was created during step~\ref{step:mutate}.
 Its inclusion in \pysr was motivated by the impressive Neural Architecture Search results of~\cite{realRegularizedEvolutionImage2019,realAutoMLZeroEvolvingMachine2020a} --- though it is worth noting similar regularizations used earlier in SR, e.g.,~\cite{hornbyALPSAgelayeredPopulation2006} and~\cite{schmidtAgefitnessParetoOptimization2010} --- which found this simple modification could prevent early convergence without hurting performance.
 This prevents the population from specializing too quickly and getting stuck in a local minimum of the search space.
-The implementation in~\cite{realAutoMLZeroEvolvingMachine2020a} uses $p=1$ and explores $4\leq n_s \leq 64$, though here \we allow $p$ to be less than $1$, among several other differences.
+The implementation in~\cite{realAutoMLZeroEvolvingMachine2020a} uses $p=1$ and explores $4\leq n_s \leq 64$, though here we allow $p$ to be less than $1$, among several other differences.
 
 
 \paragraph{Modifications.}
-\Our algorithm in \pysr, first released publicly in 2020~\cite{cranmerPySRFastParallelized2020a}, makes three changes to this evolutionary algorithm.
-\We apply simulated annealing~\cite{kirkpatrickOptimizationSimulatedAnnealing1983} to step~\ref{step:select}: given a temperature $T\in[0, 1]$, a mutation is rejected with some probability related to the change in fitness after mutation.
+Our algorithm in \pysr, first released publicly in 2020~\cite{cranmerPySRFastParallelized2020a}, makes three changes to this evolutionary algorithm.
+We apply simulated annealing~\cite{kirkpatrickOptimizationSimulatedAnnealing1983} to step~\ref{step:select}: given a temperature $T\in[0, 1]$, a mutation is rejected with some probability related to the change in fitness after mutation.
 The probability for rejection is $p=\exp(\frac{L_F - L_E}{\alpha T})$, for $L_F$ and $L_E$ the fitness of the mutated and original individual respectively, and $\alpha$ a hyperparameter.
 This allows the evolution to alternate between \textit{high temperature} and \textit{low temperature} phases, with the high temperature phases increasing diversity of individuals and the low temperature phases narrowing in on the fittest individuals.
 $\alpha$ controls the scale of temperature, with $\alpha\rightarrow\infty$ being equivalent to regular tournament selection, and $\alpha\rightarrow 0$ rejecting all mutations which lower fitness.
-Since the value of $p$ also controls the diversity of the population, \we can also couple the value of $p$ to temperature, setting a larger value of $p$ for a higher temperature, and a smaller value of $p$ for a lower temperature.
-Simulated annealing is a simple yet powerful strategy for optimizing over discrete spaces, and \we find in \cref{sec:evaluation} that simulated annealing can significantly speed up the search process.
+Since the value of $p$ also controls the diversity of the population, we can also couple the value of $p$ to temperature, setting a larger value of $p$ for a higher temperature, and a smaller value of $p$ for a lower temperature.
+Simulated annealing is a simple yet powerful strategy for optimizing over discrete spaces, and we find in \cref{sec:evaluation} that simulated annealing can significantly speed up the search process.
 
-The second modification \we make to tournament selection is specific to the individuals \we wish to consider: mathematical expressions.
-\We embed the genetic algorithm inside an \textit{evolve-simplify-optimize loop}.
+The second modification we make to tournament selection is specific to the individuals we wish to consider: mathematical expressions.
+We embed the genetic algorithm inside an \textit{evolve-simplify-optimize loop}.
 ``Evolve'' is a repeated application of tournament selection-based evolution for a set number of mutations.
 In other words, this is an entire evolution of a population.
 ``Simplify'' here refers to equation simplification---equations are simplified to an equivalent form during the loop using a set of algebraic equivalencies (since this happens infrequently enough, it tends to not harm discovery by constraining the search space).
 The ``Optimize'' part of this algorithm is a few iterations of a classical optimization algorithm (BFGS~\cite{broydenConvergenceClassDoublerank1970} is used by default, though any optimizer in the \texttt{Optim.jl} package can be used~\cite{mogensenOptimMathematicalOptimization2018}) to optimize constants in every equation explicitly.
 This part of the algorithm significantly improves the discovery of equations containing real constants, which is essential for practical application of \sr to science.
-It has been shown since at least~\cite{topchyFasterGeneticProgramming2001} that performing local gradient searches on numerical constants in expressions can vastly improve the performance of \sr---\we closely integrate an optimized and stochastic version of this.
+It has been shown since at least~\cite{topchyFasterGeneticProgramming2001} that performing local gradient searches on numerical constants in expressions can vastly improve the performance of \sr---we closely integrate an optimized and stochastic version of this.
 
 The reason why several mutations (as well as crossovers) are performed before proceeding to the \textit{simplify-optimize} stage is because some equations are only accessible via a redundant intermediate state.
 For example, $x\ast x - x\ast x$ would normally simplify to $0$, but if the simplification is avoided, the next mutation might change one of the $x$'s to $y$, resulting in $x\ast x - x \ast y$.
 Simplifying only occasionally is a way of allowing redundant but necessary intermediate expressions while at the same time reducing the size of the search space.
 
-Finally, the third modification \we make is the use of a novel \textit{adaptive parsimony} metric.
-But first, \we give a definition of complexity.
+Finally, the third modification we make is the use of a novel \textit{adaptive parsimony} metric.
+But first, we give a definition of complexity.
 
 
 \def\boxmargins{12pt}
@@ -397,7 +396,7 @@ But first, \we give a definition of complexity.
     \textbf{Complexity}:
     By default, complexity in \pysr is equal to the \textit{number of nodes in an expression tree}, regardless of each node's content.
 
-    However, complexity in \pysr is a completely user-configurable. \We argue that the best definition for a ``simple'' expression is the one that is most interpretable by the user. An expression containing a dilogarithm may look commonplace to the particle physicist---and in fact be a great prior over the space of models for certain particle physics data---but extremely unusual to the fluid dynamicist, and perhaps not coincidentally a bad choice of prior for fluids data.
+    However, complexity in \pysr is a completely user-configurable. We argue that the best definition for a ``simple'' expression is the one that is most interpretable by the user. An expression containing a dilogarithm may look commonplace to the particle physicist---and in fact be a great prior over the space of models for certain particle physics data---but extremely unusual to the fluid dynamicist, and perhaps not coincidentally a bad choice of prior for fluids data.
 }
 
 \noindent The traditional mechanism for penalizing complexity would be to use a constant \textit{parsimony}, which would involve adding a loss term equal to the complexity of an expression times a constant factor:
@@ -405,7 +404,7 @@ But first, \we give a definition of complexity.
     \ell(E) = \ell_\text{pred}(E) + (\text{parsimony}) \cdot C(E),
 \end{equation}
 for $C(E)$ the complexity of an expression $E$ and $\ell_\text{pred}$ the predictive loss.
-Instead, \we adaptively tune a per-complexity penalty such that the number of expressions at each complexity is approximately the same.
+Instead, we adaptively tune a per-complexity penalty such that the number of expressions at each complexity is approximately the same.
 This is expressed roughly as:
 \begin{equation}
     \ell(E) = \ell_\text{pred}(E) \cdot \exp( \text{frecency}[C(E)]),
@@ -416,7 +415,7 @@ Thus, this is a simple way to punish complexities adaptively by how frequent the
 This encourages the evolutionary search to explore the problem from simple, less-accurate expressions, as well as from complex, more accurate expressions.
 This qualitatively seems to help alleviate situations where the search specializes too early in the wrong functional form, and can only seem to make small iterations to it, and is discouraged from starting from scratch.
 
-Pseudocode for the outer loop loop of \pysr is given in \cref{alg:pysr}, which includes the migration steps shown in \cref{fig:migration}.
+Pseudocode for the outer loop of \pysr is given in \cref{alg:pysr}, which includes the migration steps shown in \cref{fig:migration}.
 \Cref{alg:evolve} gives pseudocode for the main \textit{evolve-simplify-optimize loop}, formalizing parts of the cartoon in \cref{fig:evolution_loop}.
 \Cref{alg:mutate} outlines the set of mutations, supplemented with simulated annealing.
 Finally, \cref{alg:tournament} describes the tournament selection strategy.
@@ -673,14 +672,14 @@ $q_\text{parsimony} \gets \frac{ \text{frecency}[C] }{ \text{frecency}[C]}$\;
 ## First, \pysr includes an optional denoising preprocessing step that optimizes a Gaussian process on the input dataset with a kernel of the form $k(x,x')=\sigma^2\exp(-\abs{x-x'}^2 / 2 l^2) + \alpha\;\delta(x-x') + C$, a superposition of a Gaussian kernel (the standard kernel for interpolating datasets), a white noise kernel (to account for intrinsic noise), and a constant kernel (which modifies the mean of the Gaussian process).
 After this kernel is optimized, the Gaussian process is used to predict denoised targets for each input point, which are then passed to the main \pysr algorithm.
 
-## Second, \pysr allows one to specify a set of weights for each input datapoint. This could be used, for instance, if a user knows the uncertainty in a measurement beforehand to be $\sigma>0$, for $\sigma$ the standard deviation of the measurement, and thus weights each datapoint in the loss by the signal-to-noise $1/\sigma^2$.
+## Second, \pysr allows one to specify a set of weights for each input data point. This could be used, for instance, if a user knows the uncertainty in a measurement beforehand to be $\sigma>0$, for $\sigma$ the standard deviation of the measurement, and thus weights each data point in the loss by the signal-to-noise $1/\sigma^2$.
 
 ## Thirdly, the user can define a custom likelihood to optimize, which can also take into account weights. This is explained in the following point.
 # \textit{Custom losses.}
 \pysr supports arbitrary user-defined loss functions, passed as either a string or a function object.
 These take a scalar prediction and target, and optionally a scalar weight, and should return a real number greater than 0.
 These per-point losses are then summed over the dataset.
-With this, the user is capable of defining arbitrary regression objectives, custom likelihoods (defined as log-likelihood of a single datapoint), and classification-based losses.
+With this, the user is capable of defining arbitrary regression objectives, custom likelihoods (defined as log-likelihood of a single data point), and classification-based losses.
 This also allows one to define implicit objectives.
 # \textit{Custom operators.}
 One of the most powerful features of \pysr is the ability to define custom operators.
@@ -765,7 +764,7 @@ Following a batch of iterations, this population is returned to the head worker,
 (3) randomly ``migrate'' expressions from other populations, and the global hall of fame, to this population.
 After these steps are finished, this population is once again dispatched to a worker where it undergoes further evolution.
 This parallelization is asynchronous, and different populations may complete evolution at different speeds without slowing down others.
-The technique is largely similar to the method described in~\cite{schmidtDistillingFreeFormNatural2009}, although here \we have modified the migration step to also migrate based on a global, permanent hall of fame, rather than exclusively migrating current population members.
+The technique is largely similar to the method described in~\cite{schmidtDistillingFreeFormNatural2009}, although here we have modified the migration step to also migrate based on a global, permanent hall of fame, rather than exclusively migrating current population members.
 Reintroducing hall of fame members can significantly speed up the search.
 
 
@@ -780,7 +779,7 @@ As a caveat of this, the user must define any custom operator using SymPy functi
 
 A similar technique---evaluating the string representation for an expression---is used for exporting expressions to a callable format in NumPy, PyTorch, and JAX~\cite{numpy,torch,jax}---each of which take vector input.
 For NumPy, constants in an expression are embedded inside the callable function.
-However, for PyTorch and JAX, since one may wish to re-optimize the constants in an expression (for example, as is done in~\cite{lemosRediscoveringNewtonGravity2022}, the constants are trainable.
+However, for PyTorch and JAX, since one may wish to re-optimize the constants in an expression (for example, as is done in~\cite{lemosRediscoveringNewtonGravity2022}), the constants are trainable.
 In PyTorch, this amounts to creating a PyTorch \texttt{nn.Parameter} for the constants, which causes PyTorch to track gradients with respect to the parameters, so they can be trained via gradient descent.
 Since JAX is a functional language, the parameters are instead exported as a vector, which the user then will pass into the callable function.
 This is similar to how deep learning frameworks in JAX are trained.
@@ -862,13 +861,13 @@ This also works for weighted losses, such as ``\texttt{loss(x, y, w) = abs(x - y
 
 
 
-In \cref{sec:intro_pysr}, \we discussed practical issues with discovering symbolic expressions in the sciences.
-Here, \we present a comparison of \pysr with existing tools in terms of addressing these concerns.
+In \cref{sec:intro_pysr}, we discussed practical issues with discovering symbolic expressions in the sciences.
+Here, we present a comparison of \pysr with existing tools in terms of addressing these concerns.
 
 
 \subsection{High Level Comparison}
 
-First, \we present a high level comparison of the various \sr tools available.
+First, we present a high level comparison of the various \sr tools available.
 These qualitative points are made using the desirable features given in \cref{sec:intro_pysr}.
 
 
@@ -909,9 +908,9 @@ For example, in the Feynman benchmark dataset of~\cite{udrescuAIFeynmanPhysicsin
 Similarly, in the commonly-used synthetic ``Nguyen'' benchmark~\cite{nguyenquanguySemanticallybasedCrossoverGenetic2011}, which includes expressions such as $F_9=\sin(x)+\sin(y^2)$, there are no non-integral constants.
 The ``SRBench'' competition of~\cite{defrancaInterpretableSymbolicRegression2023} was meticulous in its comparisons of different methods, but only contained a single real-world task (with an unknown ground truth), with all other expressions being synthetic.
 This benchmark improved on others in that it included tunable amounts of noise.
-However, the noise models are very simple: perfectly Gaussians and including no heteroscedasticity.
+However, the noise models are very simple: perfectly Gaussian and including no heteroscedasticity.
 Although such synthetic benchmarks have their uses in \sr research, these types of benchmarks are often not entirely indicative of the challenges faced in real-world scientific discovery.
-Therefore, here \we introduce a new benchmark which attempts to accurately portray the empirical equation discovery step of science.
+Therefore, here we introduce a new benchmark which attempts to accurately portray the empirical equation discovery step of science.
 Every equation in this dataset is a real empirical expression that a scientist has at one point discovered from experimental, noisy, and imperfect data.
 
 If an algorithm is to be considered to be useful for equation discovery in the sciences, it should be able to discover such relations.
@@ -963,13 +962,13 @@ Furthermore, this dataset does not include any relevant physical constants---the
 
 \subsubsection{Results on \bench}
 
-\We fork the SRBench competition repository~\cite{defrancaInterpretableSymbolicRegression2023}, as the authors have managed to perform the impressive task of aggregating a large variety of existing methods into a single repository with a common API.
+We fork the SRBench competition repository~\cite{defrancaInterpretableSymbolicRegression2023}, as the authors have managed to perform the impressive task of aggregating a large variety of existing methods into a single repository with a common API.
 However, here we aim to study the entire Pareto front of each algorithm, rather than only a single expression, as was done in SRBench.
 By reviewing the discovered expressions over the entire Pareto front, we are not sensitive to the somewhat arbitrary choice of selection criteria, which differs by method. 
 We can more accurately gauge performance of the algorithms themselves.
 Thus, we modify the interface of every algorithm to return a Pareto front of expressions, or, in the cases where it was unavailable, instead we return a list of several candidate expressions.
-\We were able to successfully test the algorithms \pysr, Operon~\cite{burlacuOperonEfficientGenetic2020}, DSR~\cite{petersenDeepSymbolicRegression2021}, EQL~\cite{sahooLearningEquationsExtrapolation2018}, QLattice~\cite{brolosApproachSymbolicRegression2021}, and SR-Transformer~\cite{kamiennyEndtoendSymbolicRegression2022} on \bench.
-Other codes were either not included in SRBench already, incompatible with our tests, or were otherwise unable to be configured on \our system after significant effort.
+We were able to successfully test the algorithms \pysr, Operon~\cite{burlacuOperonEfficientGenetic2020}, DSR~\cite{petersenDeepSymbolicRegression2021}, EQL~\cite{sahooLearningEquationsExtrapolation2018}, QLattice~\cite{brolosApproachSymbolicRegression2021}, and SR-Transformer~\cite{kamiennyEndtoendSymbolicRegression2022} on \bench.
+Other codes were either not included in SRBench already, incompatible with our tests, or were otherwise unable to be configured on our system after significant effort.
 
 We allow every method to use 8 cores on an AMD Rome CPU running Rocky Linux, and allow them to search for up to 1 hour.
 These are similar constraints to the SRBench competition, which had authors individually tune their codes for such a setting, and thus we consider these settings most fair.
@@ -997,10 +996,10 @@ All raw data with all discovered Pareto fronts for this analysis is available on
 
 
 
-\We emphasize that the stability of an \sr algorithm and software implementation itself has central importance to practical use in science, and therefore, unstable runs which either produce an undefined expression, or crash, are \textit{included} in the results dataset and the primary score.
-However, one should also note that because \we are the authors of \pysr, we are therefore more likely to be running in a stable environment than, say, a package which \we are unfamiliar with.
+We emphasize that the stability of an \sr algorithm and software implementation itself has central importance to practical use in science, and therefore, unstable runs which either produce an undefined expression, or crash, are \textit{included} in the results dataset and the primary score.
+However, one should also note that because we are the authors of \pysr, we are therefore more likely to be running in a stable environment than, say, a package which we are unfamiliar with.
 For example, as seen in \cref{tab:results}, DSR sees improved results if one ignores the failed runs, although there were still some expressions it struggled on.
-Thus, detailed itemizations of these results are given in \cref{tab:results}, to allow for a more nuanced understanding of the results.
+Thus, detailed itemization of these results is given in \cref{tab:results}, to allow for a more nuanced understanding of the results.
 Also note that this benchmark does not explicitly measure other metrics which are considered in other benchmarks, such as number of evaluations (where, e.g., genetic algorithms are very inefficient), nor does it consider the numerical accuracy of the expressions.
 
 \subsection{Discussion}
@@ -1016,14 +1015,14 @@ What is also interesting is that the two pure deep learning approaches, EQL and 
 One of these, EQL, learns the expression in an online fashion, while SR-Transformer performs fast inference based on pre-trained weights.
 SR-Transformer, in particular, is pre-trained on billions of randomly-generated synthetic expressions on a cluster of GPUs for weeks.
 However, the ``untrained'' algorithms written using classic heuristics: PySR, Operon, DSR, and QLattice, all out-performed these modern deep learning models. 
-Perhaps this is an insight into the difficulty of preparing deep learning systems for real-world data and unexpected ``long-tail'' examples, whereas hand-written standard algorithms often will perform just as well on unexpected examples.  In \sr especially, the space of potential expressions is so massive and nonlinear that interpolation techniques might suffer; consider that $x/y$ and $x\times y$ are just a single mutation away, but infinitely distinct in their data representation.
+Perhaps this is an insight into the difficulty of preparing deep learning systems for real-world data and unexpected ``long-tail'' examples, whereas handwritten standard algorithms will often perform just as well on unexpected examples.  In \sr especially, the space of potential expressions is so massive and nonlinear that interpolation techniques might suffer; consider that $x/y$ and $x\times y$ are just a single mutation away, but infinitely distinct in their data representation.
 In spite of this, while pure deep learning strategies appears to require improvements in architecture or training to be useful in a real world \sr setting, its success in, e.g.,~\cite{cranmerDiscoveringSymbolicModels2020,petersenDeepSymbolicRegression2021,kamiennyEndtoendSymbolicRegression2022} shows there is indeed strong potential long-term for such hybrid methods, and these directions should continue to be pursued.
 
 
 \section{Conclusion}
 
 In this paper, we have presented \pysr, an open-source library for practical symbolic regression.
-\We have developed \pysr with the aim of democratizing and popularizing symbolic regression in the sciences.
+We have developed \pysr with the aim of democratizing and popularizing symbolic regression in the sciences.
 By leveraging a powerful multi-population evolutionary algorithm, a unique evolve-simplify-optimize loop, a high-performance distributed backend, and integration with deep learning packages, \pysr is capable of accelerating the discovery of interpretable symbolic models from data.
 
 Furthermore, through the introduction of a new benchmark, \bench, we have provided a means to quantitatively evaluate the performance of symbolic regression algorithms in scientific applications.
@@ -1037,7 +1036,7 @@ Over the past several years since the release of \pysr in 2020, there have been 
 
 
 In some ways this list of recent applications provides the strongest validation yet of the science and user-focused approach we argued for in \cref{sec:intro_pysr}, as \pysr has already been applied successfully to model discovery in a variety of fields.
-It is \our hope that \pysr will continue to grow as a community tool, and provide value to researchers, helping discover interpretable symbolic relationships in data and ultimately leading to new insights, theories, and advancements in their respective fields.
+It is our hope that \pysr will continue to grow as a community tool, and provide value to researchers, helping discover interpretable symbolic relationships in data and ultimately leading to new insights, theories, and advancements in their respective fields.
 
 
 
@@ -1061,7 +1060,7 @@ Key dependencies of SymbolicRegression.jl include
 The packages \texttt{matplotlib}~\cite{matplotlib} and
 \texttt{showyourwork}~\cite{lugerShowyourwork2021}
 were also used in producing this manuscript.
-Quanta magazine~\cite{woodPowerfulMachineScientists2022} was used as artistic inspiration for some of the figures.
+Quanta magazine~\cite{woodPowerfulMachineScientists2022} was used as artistic inspiration for some figures.
 
 Miles Cranmer would like to thank
 the Simons Foundation for providing resources for pursuing this research;
