@@ -25,13 +25,23 @@ feel free to submit a PR to suggest any changes to the paper!
 ## Build
 
 You can build the paper, including generating all plots and tables from source, with:
+
 ```
 showyourwork build
 ```
+
 which will create `ms.pdf` in the current directory.
 
 You can also fork the repository, enable GitHub actions, and the build action will do this automatically.
 
+[![](html/abstract_snapshot.png)](https://github.com/MilesCranmer/pysr_paper/raw/main-pdf/ms.pdf)
+
+<br><br><br>
+<br><br><br>
+<br><br><br>
+
 ---
 
 This is an open source scientific article created using the [showyourwork](https://github.com/showyourwork/showyourwork) workflow.
+
+![](html/showyourwork.png)
