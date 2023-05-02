@@ -11,7 +11,7 @@
 <a href="https://github.com/MilesCranmer/pysr_paper/raw/main-pdf/arxiv.tar.gz">
 <img src="https://img.shields.io/badge/article-tarball-blue.svg?style=flat" alt="Article tarball"/>
 </a>
-<a href="https://github.com/MilesCranmer/pysr_paper/raw/main-pdf/ms.pdf">
+<a href="https://github.com/MilesCranmer/pysr_paper/blob/main-pdf/ms.pdf">
 <img src="https://img.shields.io/badge/article-pdf-blue.svg?style=flat" alt="Read the article"/>
 </a>
 </p>
@@ -19,8 +19,18 @@
 This repository holds the source code for the [PySR](https://github.com/MilesCranmer/PySR) & [SymbolicRegression.jl](https://github.com/MilesCranmer/SymbolicRegression.jl) paper,
 including LaTeX, raw data, and plotting code.
 
-Click on the [PDF](https://github.com/MilesCranmer/pysr_paper/raw/main-pdf/ms.pdf) button to download the live copy, and
+Click [here](https://github.com/MilesCranmer/pysr_paper/raw/main-pdf/ms.pdf) button to download the PDF, and
 feel free to submit a PR to suggest any changes to the paper!
+
+## Build
+
+You can build the paper, including generating all plots and tables from source, with:
+```
+showyourwork build
+```
+which will create `ms.pdf` in the current directory.
+
+You can also fork the repository, enable GitHub actions, and the build action will do this automatically.
 
 ---
 
