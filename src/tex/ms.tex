@@ -197,35 +197,35 @@ Now, this first step---discovering empirical relationships from data or based on
 In modern, high-dimensional datasets, it seems an impossible task to discover simple symbolic relationships without the use of automated tools.
 
 This brings us to an optimization problem known ``symbolic regression,'' or SR.
-In this paper, we describe an algorithm for performing \sr, and describe software dedicated to equation discovery in the sciences.
+In this paper, we describe an algorithm for performing SR, and describe software dedicated to equation discovery in the sciences.
 
 \paragraph{Symbolic Regression.}
-\Sr describes a supervised learning task where the model space is spanned by analytic expressions.
+SR describes a supervised learning task where the model space is spanned by analytic expressions.
 This is commonly solved in a multi-objective optimization framework, jointly minimizing prediction error and model complexity.
 In this family of algorithms, instead of fitting concrete parameters in some overparameterized general model, one searches the space of simple analytic expressions for accurate and interpretable models.
-In the history of science, scientists have often performed \sr ``manually,'' using a combination of their intuition and trial-and-error to find simple and accurate empirical expressions.
+In the history of science, scientists have often performed SR ``manually,'' using a combination of their intuition and trial-and-error to find simple and accurate empirical expressions.
 These empirical expressions then might lead to new theoretical insights, such as the aforementioned discoveries of Kepler and Planck leading to classical and quantum mechanics respectively.
-\Sr algorithms automate this discovery of empirical equations, exploiting the power of modern computing to test many more expressions than our intuition alone could sort through.
+SR algorithms automate this discovery of empirical equations, exploiting the power of modern computing to test many more expressions than our intuition alone could sort through.
 
-\Sr saw early developments 
+SR saw early developments 
 as a tool for science beginning in the 1970s and 1980s, with works such as~\cite{gerwinInformationProcessingData1974}, and the creation of the tool \textsc{Bacon} in~\cite{langleyBACONProductionSystem1977} with further development in, e.g.,~\cite{langleyRediscoveringPhysicsBACON1979,langleyBACONDiscoveryConservation1981}.
 Via a combination of heuristic strategies for brute force searching over possible expression trees, \textsc{Bacon} and its follow-ups such as \textsc{Fahrenheit}~\cite{langleyDatadrivenApproachesEmpirical1989}, demonstrated the ability to discovery a variety of simple physics laws from idealized data.
 The use of genetic algorithms, which allow for a more flexible search space and fewer prior assumptions about these expressions, was popularized with the work of~\cite{kozaGeneticProgrammingMeans1994}.
-Finally, with the development of the user-friendly tools \eureqa in~\cite{bongardCoverAutomatedReverse2007,schmidtDistillingFreeFormNatural2009,schmidtSymbolicRegressionImplicit2010}, as well as HeuristicLab in~\cite{wagnerHeuristicLabGenericExtensible2005}, \sr started to become practical for use on real-world and noisy scientific data and empirical equations.
+Finally, with the development of the user-friendly tools \eureqa in~\cite{bongardCoverAutomatedReverse2007,schmidtDistillingFreeFormNatural2009,schmidtSymbolicRegressionImplicit2010}, as well as HeuristicLab in~\cite{wagnerHeuristicLabGenericExtensible2005}, SR started to become practical for use on real-world and noisy scientific data and empirical equations.
 
 \paragraph{Equation Discovery for Science.} 
 Today \eureqa is a closed-source proprietary tool, and has fallen out of common use in the sciences.
 In addition to other early work such as~\cite{debFastElitistNondominated2000,debFastElitistMultiobjective2002,davidsonSymbolicNumericalRegression2003,cranmerPhysicsGPGeneticProgramming2005},
-there have recently been a significant number of exciting new developments in \sr as well as \sr for science.
+there have recently been a significant number of exciting new developments in SR as well as SR for science.
 These have largely been focused on genetic algorithms on expressions represented as trees, and include core advances to genetic algorithms, such as~\cite{lacavaEpsilonLexicaseSelectionRegression2016,lacavaProbabilisticMultiobjectiveAnalysis2018}, which propose modified strategies for selecting an individual to mutate and~\cite{virgolinScalableGeneticProgramming2017,virgolinImprovingModelbasedGenetic2021} which use an adaptive form of recombination based on emerging statistical patterns.
-New strategies for \sr altogether have also been developed:
-in particular, our previous work~\cite{cranmerLearningSymbolicPhysics2019,cranmerDiscoveringSymbolicModels2020,cranmerDisentangledSparsityNetworks2021} proposes \sr as a way of interpreting a neural network.
-Neural networks can efficiently find low-dimensional patterns in high-dimensional data, and so this mixed strategy also presents a way of performing \sr on high-dimensional or non-tabular data.
+New strategies for SR altogether have also been developed:
+in particular, our previous work~\cite{cranmerLearningSymbolicPhysics2019,cranmerDiscoveringSymbolicModels2020,cranmerDisentangledSparsityNetworks2021} proposes SR as a way of interpreting a neural network.
+Neural networks can efficiently find low-dimensional patterns in high-dimensional data, and so this mixed strategy also presents a way of performing SR on high-dimensional or non-tabular data.
 
-Additional techniques include~\cite{jinBayesianSymbolicRegression2020,guimeraBayesianMachineScientist2020} which propose a Markov chain Monte Carlo-like sampling for \sr;
+Additional techniques include~\cite{jinBayesianSymbolicRegression2020,guimeraBayesianMachineScientist2020} which propose a Markov chain Monte Carlo-like sampling for SR;
 \cite{petersenDeepSymbolicRegression2021,liNeuralguidedSymbolicRegression2019} which trains deep generative models to propose mutated expressions;
 \cite{dascoliDeepSymbolicRegression2022,kamiennyEndtoendSymbolicRegression2022} which pre-train a large transformer model on billions of synthetic examples, in order to autoregressively generate expressions from data;
-\cite{udrescuAIFeynmanParetooptimal2020,liuAIPoincareMachine2020,wetzelDiscoveringSymmetryInvariants2020} which develop techniques for discovering symmetries with \sr;
+\cite{udrescuAIFeynmanParetooptimal2020,liuAIPoincareMachine2020,wetzelDiscoveringSymmetryInvariants2020} which develop techniques for discovering symmetries with SR;
 \cite{sahooLearningEquationsExtrapolation2018} which optimizes a sparse set of coefficients in a very large pre-defined expression with stochastic gradient descent; and finally~\cite{atkinsonDatadrivenDiscoveryFreeform2019,rossBenchmarkingMachineLearning2022} which apply genetic algorithms to a flexible space of differential equations.
 
 Apart from trees, a few other data structures are used for representing symbolic expressions, such as imperative representations (``Linear Genetic Programming'')~\citep[e.g.,][]{brameierComparisonLinearGenetic2001,guvenLinearGeneticProgramming2009,maEvolvingSymbolicDensity2022,diasDescribingQuantumInspiredLinear2012}, and sequence representations~\citep[e.g.,][]{liuAIPoincareMachine2020,dascoliDeepSymbolicRegression2022,kamiennyEndtoendSymbolicRegression2022}.
@@ -236,14 +236,14 @@ Additional techniques include mixed integer nonlinear programming~\citep{cozadGl
 
 
 However, here we argue that many existing algorithms lack certain features which make them practical in a broad setting for discovering interpretable equations in science.
-The requirements for ``scientific \sr'' are significantly more difficult than for \sr applied to synthetic datasets, which many algorithms are implicitly trained on via synthetic benchmarks.
+The requirements for ``scientific SR'' are significantly more difficult than for SR applied to synthetic datasets, which many algorithms are implicitly trained on via synthetic benchmarks.
 We list these below.
 
 \begin{easylist}
 \ListProperties(Margin1=1cm,Hang1=true,Indent1=.5cm,Numbers1=a,Start1=1,Align=0.5cm)
 #
 an empirical equation in science quite often contains unknown real constants\footnote{One could argue that any constant in a scientific model must depend on a finite number of known constants of physics (e.g., the speed of light) and mathematics (e.g., $\pi$). However, this introduces significantly more complexity than is being reduced, as the relationship with fundamental constants to derived constants might be arbitrarily complex.}
-The set of possible expressions considered by some \sr algorithms such as~\cite{udrescuAIFeynmanParetooptimal2020}: operators, integers, and variables---is discrete and finite up to a given max size.
+The set of possible expressions considered by some SR algorithms such as~\cite{udrescuAIFeynmanParetooptimal2020}: operators, integers, and variables---is discrete and finite up to a given max size.
 This set is even searchable with brute force, as is used in~\cite{udrescuAIFeynmanParetooptimal2020} in combination with a symmetry and dimensional analysis module.
 However, with arbitrary real constants, the set of equations one must search is uncountably infinite.
 The difficulty of searching this set is further compounded by several factors:
@@ -259,10 +259,10 @@ Discovered expressions in science must satisfy known constraints, e.g., mass con
 #
 Empirical relations are frequently comprised of operators which are unique to one particular field of science, so the equation search strategy must allow for custom operators.
 #
-Observational data is often high-dimensional, and the \sr algorithm must either manage this internally, or be layered with a feature selection algorithm.
+Observational data is often high-dimensional, and the SR algorithm must either manage this internally, or be layered with a feature selection algorithm.
 #
 The search tool must be capable of finding relationships in non-tabular datasets, such as sequences, grids, and graphs (for example, by using aggregation operators such as $\sum$). #
-Finally, and most importantly, any \sr package useful to scientists must be open-source, cross-platform, easy-to-use, and interface with common tools.
+Finally, and most importantly, any SR package useful to scientists must be open-source, cross-platform, easy-to-use, and interface with common tools.
 For more discussion, the references~\cite{price-whelanAstropyProjectBuilding2018,astropycollaborationAstropyProjectSustaining2022} consider this from the point of view of the astrophysics community.
 \end{easylist}
 
@@ -286,7 +286,7 @@ We then discuss a few additional implementation features in \cref{sec:interfaces
 \pysr is a multi-population evolutionary algorithm with multiple evolutions performed asynchronously.
 The main loop of \pysr, operating on each population independently, is a classic evolutionary algorithm based on tournament selection for individual selection (first introduced in the thesis of~\cite{brindleGeneticAlgorithmsFunction1980} and generalized in~\cite{goldbergComparativeAnalysisSelection1991}),
 and several mutations and crossovers for generating new individuals.
-Evolutionary algorithms for \sr was first popularized in~\cite{kozaGeneticProgrammingMeans1994}, and has dominated the development of flexible \sr algorithms since.
+Evolutionary algorithms for SR was first popularized in~\cite{kozaGeneticProgrammingMeans1994}, and has dominated the development of flexible SR algorithms since.
 \pysr makes several modifications to this classic approach, some of which are motivated by results in recent work.
 
 \begin{figure}[h!]
@@ -360,8 +360,8 @@ We embed the genetic algorithm inside an \textit{evolve-simplify-optimize loop}.
 In other words, this is an entire evolution of a population.
 ``Simplify'' here refers to equation simplification---equations are simplified to an equivalent form during the loop using a set of algebraic equivalencies (since this happens infrequently enough, it tends to not harm discovery by constraining the search space).
 The ``Optimize'' part of this algorithm is a few iterations of a classical optimization algorithm (BFGS~\cite{broydenConvergenceClassDoublerank1970} is used by default, though any optimizer in the \texttt{Optim.jl} package can be used~\cite{mogensenOptimMathematicalOptimization2018}) to optimize constants in every equation explicitly.
-This part of the algorithm significantly improves the discovery of equations containing real constants, which is essential for practical application of \sr to science.
-It has been shown since at least~\cite{topchyFasterGeneticProgramming2001} that performing local gradient searches on numerical constants in expressions can vastly improve the performance of \sr---we closely integrate an optimized and stochastic version of this.
+This part of the algorithm significantly improves the discovery of equations containing real constants, which is essential for practical application of SR to science.
+It has been shown since at least~\cite{topchyFasterGeneticProgramming2001} that performing local gradient searches on numerical constants in expressions can vastly improve the performance of SR---we closely integrate an optimized and stochastic version of this.
 
 The reason why several mutations (as well as crossovers) are performed before proceeding to the \textit{simplify-optimize} stage is because some equations are only accessible via a redundant intermediate state.
 For example, $x\ast x - x\ast x$ would normally simplify to $0$, but if the simplification is avoided, the next mutation might change one of the $x$'s to $y$, resulting in $x\ast x - x \ast y$.
@@ -684,7 +684,7 @@ This also allows one to define implicit objectives.
 # \textit{Custom operators.}
 One of the most powerful features of \pysr is the ability to define custom operators.
 Different domains of science have functions unique to their field which appear in many formulae and hold a specific meaning.
-It is therefore very important that these operators be available in an \sr library, and so \pysr allows custom user-defined unary or binary functions.
+It is therefore very important that these operators be available in an SR library, and so \pysr allows custom user-defined unary or binary functions.
 So long as a function can be defined as either
 $f:\mathbb{R}\rightarrow \mathbb{R}$ or $\mathbb{R}^2\rightarrow\mathbb{R}$, it can be used as a user-defined operator.
 \pysr \ul{does not treat built-in operators any differently than user-defined ones.}
@@ -789,8 +789,8 @@ This is similar to how deep learning frameworks in JAX are trained.
 
 The occurrence rate of a particular mathematical operator in a set of models varies by the scientific field those models describe.
 For example, models in Epidemiology commonly use exponentials, indicating exponential growth or decay of a contagious disease, but may rarely use a Bessel function — which would be more common in in classical physics applications.
-The entire reason that \sr produces interpretable models is because the generated expressions make use of operators which are common in a particular field, and a domain scientist may be able to see connections with existing models.
-In some ways, this process relates to language: black box machine learning models represent functions in a language uninterpretable to a scientist, whereas \sr uses the language in place.
+The entire reason that SR produces interpretable models is that the generated expressions make use of operators which are common in a particular field, and a domain scientist may be able to see connections with existing models.
+In some ways, this process relates to language: black box machine learning models represent functions in a language uninterpretable to a scientist, whereas SR uses the language in place.
 Furthermore, due to the modular nature of scientific modelling---many complex models are built on-top of existing simple models for particular subsystems---it also makes sense from a standpoint of improving model accuracy to make use of common operators (for an interesting explicit example of this, see~\cite{guimeraBayesianMachineScientist2020}).
 
 \pysr does not, per se, have any built-in operators.
@@ -849,7 +849,7 @@ Minimizing MSE is equivalent to maximizing the Gaussian log-likelihood.
 However, in science, one typically works with 
 a likelihood that is very specific to a particular problem,
 and this is often non-Gaussian.
-Therefore, it is important for an \sr package to allow for custom loss functions.
+Therefore, it is important for an SR package to allow for custom loss functions.
 \pysr implements this in a way that is very similar to that of custom operators (see \cref{sec:custom_operators}).
 Given a string such as ``\texttt{loss(x, y) = abs(x - y)}'', \pysr will pass this to the Julia backend, which will automatically vectorize it and use it as a loss function throughout the search process.
 In a Bayesian context, this would allow one to define arbitrary likelihoods, even for very complex branching logic.
@@ -867,7 +867,7 @@ Here, we present a comparison of \pysr with existing tools in terms of addressin
 
 \subsection{High Level Comparison}
 
-First, we present a high level comparison of the various \sr tools available.
+First, we present a high level comparison of the various SR tools available.
 These qualitative points are made using the desirable features given in \cref{sec:intro_pysr}.
 
 
@@ -902,14 +902,14 @@ $\ast$ & Note that the ``Symbolic Distillation'' method from~\cite{cranmerDiscov
 \subsection{\bench: \fullbench}
 \label{sec:new_benchmark}
 
-Existing \sr benchmarks have certain simplifications compared to the datasets used to historically discover well-known empirical equations.
+Existing SR benchmarks have certain simplifications compared to the datasets used to historically discover well-known empirical equations.
 When discovering a new expression, one does not actually know the physical constants in the expression, and one must have to learn real constants.
 For example, in the Feynman benchmark dataset of~\cite{udrescuAIFeynmanPhysicsinspired2020}, all expressions are listed with the associated physical constants---but these constants originally had to be discovered along with the equation.
 Similarly, in the commonly-used synthetic ``Nguyen'' benchmark~\cite{nguyenquanguySemanticallybasedCrossoverGenetic2011}, which includes expressions such as $F_9=\sin(x)+\sin(y^2)$, there are no non-integral constants.
 The ``SRBench'' competition of~\cite{defrancaInterpretableSymbolicRegression2023} was meticulous in its comparisons of different methods, but only contained a single real-world task (with an unknown ground truth), with all other expressions being synthetic.
 This benchmark improved on others in that it included tunable amounts of noise.
 However, the noise models are very simple: perfectly Gaussian and including no heteroscedasticity.
-Although such synthetic benchmarks have their uses in \sr research, these types of benchmarks are often not entirely indicative of the challenges faced in real-world scientific discovery.
+Although such synthetic benchmarks have their uses in SR research, these types of benchmarks are often not entirely indicative of the challenges faced in real-world scientific discovery.
 Therefore, here we introduce a new benchmark which attempts to accurately portray the empirical equation discovery step of science.
 Every equation in this dataset is a real empirical expression that a scientist has at one point discovered from experimental, noisy, and imperfect data.
 
@@ -927,7 +927,7 @@ The code and datasets used to generate this benchmark and evaluate are available
     \begin{center}
         \includegraphics[width=0.95\linewidth]{figures/benchmark_data.pdf}
     \end{center}
-    \caption{Visualization of all the data in \bench, an \sr benchmark for science.
+    \caption{Visualization of all the data in \bench, an SR benchmark for science.
     Color is used to denote additional variables in the cases of relations which depend on more than two inputs.
     Original data in the discovery of each law is used where easily available.
     Otherwise, data is generated from the formula with realistic ranges of variables, with a level of noise applied.
@@ -953,7 +953,7 @@ As noted in the ``Regression Target'' column, many of these laws which are easil
 The search algorithm must discover this better unit by itself.
 
 Many existing benchmarks for physical expression searches are based on theoretically-derived equations rather than empirically-observed and formulated. 
-While these are likely useful for benchmarking some parts of the \sr landscape, they do not target the aspect which \sr would ultimately be used for: empirical discovery.
+While these are likely useful for benchmarking some parts of the SR landscape, they do not target the aspect which SR would ultimately be used for: empirical discovery.
 Thus, all the equations in this dataset were first empirically formulated before (and if) they were theoretically-derived.
 Thus, the physical variables here directly correspond to observables.
 Furthermore, this dataset does not include any relevant physical constants---the algorithm must find these automatically, as did the scientist who discovered the equation.
@@ -996,7 +996,7 @@ All raw data with all discovered Pareto fronts for this analysis is available on
 
 
 
-We emphasize that the stability of an \sr algorithm and software implementation itself has central importance to practical use in science, and therefore, unstable runs which either produce an undefined expression, or crash, are \textit{included} in the results dataset and the primary score.
+We emphasize that the stability of an SR algorithm and software implementation itself has central importance to practical use in science, and therefore, unstable runs which either produce an undefined expression, or crash, are \textit{included} in the results dataset and the primary score.
 However, one should also note that because we are the authors of \pysr, we are therefore more likely to be running in a stable environment than, say, a package which we are unfamiliar with.
 For example, as seen in \cref{tab:results}, DSR sees improved results if one ignores the failed runs, although there were still some expressions it struggled on.
 Thus, detailed itemization of these results is given in \cref{tab:results}, to allow for a more nuanced understanding of the results.
@@ -1015,8 +1015,8 @@ What is also interesting is that the two pure deep learning approaches, EQL and 
 One of these, EQL, learns the expression in an online fashion, while SR-Transformer performs fast inference based on pre-trained weights.
 SR-Transformer, in particular, is pre-trained on billions of randomly-generated synthetic expressions on a cluster of GPUs for weeks.
 However, the ``untrained'' algorithms written using classic heuristics: PySR, Operon, DSR, and QLattice, all out-performed these modern deep learning models. 
-Perhaps this is an insight into the difficulty of preparing deep learning systems for real-world data and unexpected ``long-tail'' examples, whereas handwritten standard algorithms will often perform just as well on unexpected examples.  In \sr especially, the space of potential expressions is so massive and nonlinear that interpolation techniques might suffer; consider that $x/y$ and $x\times y$ are just a single mutation away, but infinitely distinct in their data representation.
-In spite of this, while pure deep learning strategies appears to require improvements in architecture or training to be useful in a real world \sr setting, its success in, e.g.,~\cite{cranmerDiscoveringSymbolicModels2020,petersenDeepSymbolicRegression2021,kamiennyEndtoendSymbolicRegression2022} shows there is indeed strong potential long-term for such hybrid methods, and these directions should continue to be pursued.
+Perhaps this is an insight into the difficulty of preparing deep learning systems for real-world data and unexpected ``long-tail'' examples, whereas handwritten standard algorithms will often perform just as well on unexpected examples.  In SR especially, the space of potential expressions is so massive and nonlinear that interpolation techniques might suffer; consider that $x/y$ and $x\times y$ are just a single mutation away, but infinitely distinct in their data representation.
+In spite of this, while pure deep learning strategies appears to require improvements in architecture or training to be useful in a real world SR setting, its success in, e.g.,~\cite{cranmerDiscoveringSymbolicModels2020,petersenDeepSymbolicRegression2021,kamiennyEndtoendSymbolicRegression2022} shows there is indeed strong potential long-term for such hybrid methods, and these directions should continue to be pursued.
 
 
 \section{Conclusion}
@@ -1069,7 +1069,7 @@ my research collaborators who provided feedback throughout the development of \p
 all of the wonderful open-source code contributors, including Mark Kittisopikul, T Coxon, Dhananjay Ashok, Johan Blåbäck, Julius Martensen, GitHub user \texttt{@ngam}, Christopher Rackauckas, Jerry Ling, Charles Fox, Johann Brehmer, Marius Millea, GitHub user \texttt{@Coba}, Pietro Monticone, Mateusz Kubica, GitHub user \texttt{@Jgmedina95}, Michael Abbott, Oscar Smith, and several others;
 Marco Virgolin for extremely helpful comments on a draft of this paper, as well as general feedback;
 Bill La Cava for providing feedback as well as spearheading the SRBench initiative, along with the rest of the SRBench organizers;
-Brenden Petersen for feedback on \pysr as well as providing insights discussions about the \sr landscape;
+Brenden Petersen for feedback on \pysr as well as providing insights discussions about the SR landscape;
 and so many others who have provided support to the project through email, Twitter, GitHub issues, and in-person.
 I am blown away by the community that is forming around \pysr and the positive feedback it has received. Thank you.
 
