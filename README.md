@@ -30,7 +30,7 @@ You can build the paper, including generating all plots and tables from source, 
 showyourwork build
 ```
 
-which will create `ms.pdf` in the current directory.
+which uses [showyourwork](https://github.com/showyourwork/showyourwork) to create `ms.pdf` in the current directory.
 
 You can also fork the repository, enable GitHub actions, and the build action will do this automatically.
 
