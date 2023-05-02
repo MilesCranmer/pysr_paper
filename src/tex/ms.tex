@@ -225,14 +225,14 @@ Neural networks can efficiently find low-dimensional patterns in high-dimensiona
 
 Additional techniques include~\cite{jinBayesianSymbolicRegression2020,guimeraBayesianMachineScientist2020} which propose a Markov chain Monte Carlo-like sampling for \sr;
 \cite{petersenDeepSymbolicRegression2021,liNeuralguidedSymbolicRegression2019} which trains deep generative models to propose mutated expressions;
-\cite{dascoliDeepSymbolicRegression2022,kamiennyEndtoendSymbolicRegression2022} which pre-train a large transformer model on billions of synthetic examples, in order to auto-regressively generate expressions from data;
+\cite{dascoliDeepSymbolicRegression2022,kamiennyEndtoendSymbolicRegression2022} which pre-train a large transformer model on billions of synthetic examples, in order to autoregressively generate expressions from data;
 \cite{udrescuAIFeynmanParetooptimal2020,liuAIPoincareMachine2020,wetzelDiscoveringSymmetryInvariants2020} which develop techniques for discovering symmetries with \sr;
 \cite{sahooLearningEquationsExtrapolation2018} which optimizes a sparse set of coefficients in a very large pre-defined expression with stochastic gradient descent; and finally~\cite{atkinsonDatadrivenDiscoveryFreeform2019,rossBenchmarkingMachineLearning2022} which apply genetic algorithms to a flexible space of differential equations.
 
 Apart from trees, a few other data structures are used for representing symbolic expressions, such as imperative representations (``Linear Genetic Programming'')~\citep[e.g.,][]{brameierComparisonLinearGenetic2001,guvenLinearGeneticProgramming2009,maEvolvingSymbolicDensity2022,diasDescribingQuantumInspiredLinear2012}, and sequence representations~\citep[e.g.,][]{liuAIPoincareMachine2020,dascoliDeepSymbolicRegression2022,kamiennyEndtoendSymbolicRegression2022}.
 One of the most popular alternatives to genetic algorithms on trees, especially for the study of PDEs, is ``SINDy'' (Sparse Identification of Nonlinear Dynamics) ~\cite{bruntonDiscoveringGoverningEquations2016,rudyDatadrivenDiscoveryPartial2017,championDatadrivenDiscoveryCoordinates2019} which represents expressions as linear combination of a dictionary of fixed nonlinear expressions.
 Similar ideas of a linear basis of terms is used in the initialization of the ``Operon'' genetic algorithm~\cite{burlacuOperonEfficientGenetic2020}, as well as in ``FFX''~\cite{mcconaghyFFXFastScalable2011}.
-This strategy can also be combined with deep learning~\citep[e.g.,][]{luschDeepLearningUniversal2018,championDatadrivenDiscoveryCoordinates2019,bothDeepMoDDeepLearning2019,chenDeepLearningPhysical2020,rackauckasUniversalDifferentialEquations2020} or other techniques to find expressions on high-dimensional data~\citep[e.g.,][]{rossBenchmarkingMachineLearning2022}.
+This strategy can also be combined with deep learning~\citep[e.g., ][]{luschDeepLearningUniversal2018,championDatadrivenDiscoveryCoordinates2019,bothDeepMoDDeepLearning2019,chenDeepLearningPhysical2020,rackauckasUniversalDifferentialEquations2020} or other techniques to find expressions on high-dimensional data~\citep[e.g., ][]{rossBenchmarkingMachineLearning2022}.
 Additional techniques include mixed integer nonlinear programming~\citep{cozadGlobalMINLPApproach2018} and greedy tree searches~\citep{defrancaGreedySearchTree2018}, and combining theory as a type of constraint over the space of models~\cite{cornelioAIDescartesCombining2021}.
 
 
@@ -286,7 +286,7 @@ We then discuss a few additional implementation features in \cref{sec:interfaces
 
 \pysr is a multi-population evolutionary algorithm with multiple evolutions performed asynchronously.
 The main loop of \pysr, operating on each population independently, is a classic evolutionary algorithm based on tournament selection for individual selection (first introduced in the thesis of~\cite{brindleGeneticAlgorithmsFunction1980} and generalized in~\cite{goldbergComparativeAnalysisSelection1991}),
-and several different mutations and crossovers for generating new individuals.
+and several mutations and crossovers for generating new individuals.
 Evolutionary algorithms for \sr was first popularized in~\cite{kozaGeneticProgrammingMeans1994}, and has dominated the development of flexible \sr algorithms since.
 \pysr makes several modifications to this classic approach, some of which are motivated by results in recent work.
 
@@ -330,7 +330,7 @@ A simple evolutionary algorithm proceeds as follows:
 \label{step:prep_tournament}
 # Select the fittest individual as the winner with probability $p$. Otherwise, remove this individual from the subset and repeat this step again.
 If there is one remaining, select it.
-Thus the probability will roughly be $p, p(1-p), p(1-p)^2, ...$ for the first, second, third fittest, and so on. 
+Thus, the probability will roughly be $p, p(1-p), p(1-p)^2, \ldots$ for the first, second, third fittest, and so on. 
 \label{step:select}
 # Create a copy of this selected individual, and apply a randomly-selected mutation from a set of possible mutations.
 \label{step:mutate}
@@ -338,11 +338,11 @@ Thus the probability will roughly be $p, p(1-p), p(1-p)^2, ...$ for the first, s
 \label{step:replace}
 \end{easylist}
 
-This algorithm is computationally efficient and allows for massive paralellization by splitting step~\ref{step:sampling} into groups of individuals which can evolve independently, with asynchronous ``migration'' between the groups.
+This algorithm is computationally efficient and allows for massive parallelization by splitting step~\ref{step:sampling} into groups of individuals which can evolve independently, with asynchronous ``migration'' between the groups.
 For the first of the modifications, \we replace the eldest member of a population in step~\ref{step:mutate}, rather than the individual with the lowest fitness, which is known as ``age-regularized'' evolution~\cite{realRegularizedEvolutionImage2019}.
 We record the age from the Unix time at which the individual was created during step~\ref{step:mutate}.
 Its inclusion in \pysr was motivated by the impressive Neural Architecture Search results of~\cite{realRegularizedEvolutionImage2019,realAutoMLZeroEvolvingMachine2020a} --- though it is worth noting similar regularizations used earlier in SR, e.g.,~\cite{hornbyALPSAgelayeredPopulation2006} and~\cite{schmidtAgefitnessParetoOptimization2010} --- which found this simple modification could prevent early convergence without hurting performance.
-This prevents the population from specializing too quickly and getting stuck in a local minima of the search space.
+This prevents the population from specializing too quickly and getting stuck in a local minimum of the search space.
 The implementation in~\cite{realAutoMLZeroEvolvingMachine2020a} uses $p=1$ and explores $4\leq n_s \leq 64$, though here \we allow $p$ to be less than $1$, among several other differences.
 
 
