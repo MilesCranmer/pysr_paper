@@ -35,8 +35,6 @@
 \usepackage{multirow}
 \usepackage[ttdefault=true]{AnonymousPro}
 
-% \usepackage{minted}
-%% Create cache:
 \usepackage[finalizecache]{minted}
 \setminted[]{
   frame=lines,
@@ -134,6 +132,7 @@
 \newcommand\myhref[2]{\textsf{\textcolor{blue}{\href{#1}{#2}}}}
 \newcommand\giturl{\myhref{https://github.com/MilesCranmer/pysr_paper}{github.com/MilesCranmer/pysr\_paper}}
 
+
 \titlehead{
     \begin{center}
     \parbox{0.3\textwidth}{
@@ -169,6 +168,7 @@ This benchmark measures recovery of historical empirical equations from original
 \end{abstract}
 \end{@twocolumnfalse}
 ]
+
 
 
 
@@ -659,7 +659,9 @@ $q_\text{parsimony} \gets \frac{ \text{frecency}[C] }{ \text{frecency}[C]}$\;
 \caption{Tournament selection.\label{alg:tournament} }
 \end{algorithm}
 
- 
+
+
+
 
 
 \paragraph{Additional Features.}
@@ -999,6 +1001,7 @@ All raw data with all discovered Pareto fronts for this analysis is available on
 However, one should also note that because \we are the authors of \pysr, we are therefore more likely to be running in a stable environment than, say, a package which \we are unfamiliar with.
 For example, as seen in \cref{tab:results}, DSR sees improved results if one ignores the failed runs, although there were still some expressions it struggled on.
 Thus, detailed itemizations of these results are given in \cref{tab:results}, to allow for a more nuanced understanding of the results.
+Also note that this benchmark does not explicitly measure other metrics which are considered in other benchmarks, such as number of evaluations (where, e.g., genetic algorithms are very inefficient), nor does it consider the numerical accuracy of the expressions.
 
 \subsection{Discussion}
 
