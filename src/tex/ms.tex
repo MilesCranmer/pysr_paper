@@ -120,6 +120,7 @@
 \newcommand\Our{Our\xspace}
 \newcommand\our{our\xspace}
 \newcommand\pysr{\textsc{PySR}\xspace}
+\newcommand\pysrjlabs{\mbox{\textsc{SymbolicRegression.jl}}\xspace}
 \newcommand\pysrjl{\textsc{SymbolicRegression.jl}\xspace}
 \newcommand\eureqa{\textsc{Eureqa}\xspace}
 \newcommand\sr{SR\xspace}
@@ -128,7 +129,6 @@
 
 
 \usepackage{cleveref} \begin{document}
-\thispagestyle{empty}
 \newcommand\myhref[2]{\textsf{\textcolor{blue}{\href{#1}{#2}}}}
 \newcommand\giturl{\myhref{https://github.com/MilesCranmer/pysr_paper}{github.com/MilesCranmer/pysr\_paper}}
 
@@ -158,19 +158,22 @@
 \twocolumn[\begin{@twocolumnfalse}
 \maketitle
 \begin{abstract}
-\pysr is an open-source library for practical \textit{symbolic regression}, a type of machine learning which aims to discover human-interpretable symbolic models.
+\addtocounter{footnote}{2}
+\pysr\footnotemark{} is an open-source library for practical \textit{symbolic regression}, a type of machine learning which aims to discover human-interpretable symbolic models.
 \pysr was developed to democratize and popularize symbolic regression for the sciences, and is built on a high-performance distributed backend, a flexible search algorithm, and interfaces with several deep learning packages.
 \pysr's internal search algorithm is a multi-population evolutionary algorithm, which consists of a unique evolve-simplify-optimize loop, designed for optimization of unknown scalar constants in newly-discovered empirical expressions.
-\pysr's backend is an extremely optimized Julia library \pysrjl, which can be used directly from Julia. It is capable of fusing user-defined operators into SIMD kernels at runtime, performing automatic differentiation, and distributing populations of expressions to thousands of cores across a cluster.
+\pysr's backend is an extremely optimized Julia library \pysrjlabs\footnotemark{},
+which can be used directly from Julia. It is capable of fusing user-defined operators into SIMD kernels at runtime, performing automatic differentiation, and distributing populations of expressions to thousands of cores across a cluster.
 In describing this software, we also introduce a new benchmark, ``\textit{EmpiricalBench},’’ to quantify the applicability of symbolic regression algorithms in science.
 This benchmark measures recovery of historical empirical equations from original and synthetic datasets.
 \end{abstract}
 \end{@twocolumnfalse}
 ]
 
-
-
-
+\addtocounter{footnote}{-1}
+\footnotetext{\textsf{github.com/MilesCranmer/PySR}}
+\addtocounter{footnote}{1}
+\footnotetext{\textsf{github.com/MilesCranmer/SymbolicRegression.jl}}
 
 
 
@@ -180,6 +183,7 @@ This benchmark measures recovery of historical empirical equations from original
 
 \section{Introduction}
 \label{sec:intro_pysr}
+
 
 
 
