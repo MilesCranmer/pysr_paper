@@ -76,7 +76,7 @@ preprocess_arxiv:
   script: src/scripts/preprocess_arxiv_tex.sh
 
 # Command-line options to be passed to tectonic when building the manuscript
-tectonic_args: ["-Z", "shell-escape"]
+tectonic_args: ["-Z", "shell-escape", "-Z", "shell-escape-cwd=."]
 
 # Enable verbose output?
 verbose: false
