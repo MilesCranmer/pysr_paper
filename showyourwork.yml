@@ -67,6 +67,14 @@ stamp:
     # Maximum URL length to display
     maxlen: 40
 
+# Preprocessing script for arXiv tarball
+# (such as to switch `minted` from `finalizecache` to `frozencache`)
+preprocess_arxiv:
+  enabled: true
+  # The script will be passed a directory containing the manuscript source
+  # as input, and should modify the contents of that directory in-place.
+  script: src/scripts/preprocess_arxiv_tex.sh
+
 # Command-line options to be passed to tectonic when building the manuscript
 tectonic_args: ["-Z", "shell-escape"]
 

@@ -17,7 +17,5 @@ jobs:
       - name: Build the article PDF
         id: build
         uses: showyourwork/showyourwork-action@v1
-        env:
-          SANDBOX_TOKEN: ${{ secrets.SANDBOX_TOKEN }}
-          OVERLEAF_EMAIL: ${{ secrets.OVERLEAF_EMAIL }}
-          OVERLEAF_PASSWORD: ${{ secrets.OVERLEAF_PASSWORD }}
+        with:
+          showyourwork-spec: git+https://github.com/MilesCranmer/showyourwork.git@preprocess-tarball
