@@ -18,7 +18,7 @@ This works for most methods.
 However, `operon` needs special treatment. To run `operon`, use the following instead:
 
 1. Initialize with `mkdir -p /tmp/operon && cp official_competitors/operon/flake.nix /tmp/operon/ && export OLDDIR=$(pwd) && cd /tmp/operon`.
-2. Run with: `nix-portable nix develop -i -c /bin/bash -c 'export HOME=/mnt/home/mcranmer && cd ~/pysr_paper_syw/srbench-comp && python evaluate_method.py --method operon --dataset {dataset}'`
+2. Run with: `nix-portable nix develop -i -c /bin/bash -c 'export HOME=/mnt/home/mcranmer && cd ~/pysr_paper_syw/benchmark && python evaluate_method.py --method operon --dataset {dataset}'`
 3. Back to the directory with `cd $OLDDIR`.
 
 Finally, you can clean up with (if they have changed)

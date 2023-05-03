@@ -35,4 +35,4 @@ hall_of_fame*
 **/*.log
 **/slurm*.csh
 **/slurm*.sh
-srbench-comp/results
+benchmark/results

@@ -13,8 +13,8 @@ if [[ "$1" = "operon" ]]; then
     export build_dir="/dev/shm/$key/"
     mkdir $build_dir
     cd $build_dir
-    cp ~/pysr_paper_syw/srbench-comp/official_competitors/operon/flake.nix ./
-    /mnt/home/mcranmer/bin/nix-portable nix develop -i --no-write-lock-file -c /bin/sh -c 'export HOME=/mnt/home/mcranmer && cd ~/pysr_paper_syw/srbench-comp && python evaluate_method.py '"--method operon --dataset $2 --seed $3 --version $4"
+    cp ~/pysr_paper_syw/benchmark/official_competitors/operon/flake.nix ./
+    /mnt/home/mcranmer/bin/nix-portable nix develop -i --no-write-lock-file -c /bin/sh -c 'export HOME=/mnt/home/mcranmer && cd ~/pysr_paper_syw/benchmark && python evaluate_method.py '"--method operon --dataset $2 --seed $3 --version $4"
 else
 
     if [[ -d /dev/shm/miniforge3 ]]; then
@@ -27,7 +27,7 @@ else
     . "/dev/shm/miniforge3/etc/profile.d/conda.sh"
     conda activate
     conda activate $1
-    cd /mnt/home/mcranmer/pysr_paper_syw/srbench-comp
+    cd /mnt/home/mcranmer/pysr_paper_syw/benchmark
     PYTHON=/dev/shm/miniforge3/envs/$1/bin/python
     $PYTHON evaluate_method.py --method $1 --dataset $2 --seed $3 --version $4
 fi

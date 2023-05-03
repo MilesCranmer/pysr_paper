@@ -7,7 +7,7 @@ docker build -t docker.flatironinstitute.org/mcranmer/srbench-core:latest .
 to_push=( "docker.flatironinstitute.org/mcranmer/srbench-core" )
 
 old_dir=$(pwd)
-base_dir="/mnt/home/mcranmer/pysr_paper_syw/srbench-comp/official_competitors"
+base_dir="/mnt/home/mcranmer/pysr_paper_syw/benchmark/official_competitors"
 cd $base_dir
 for dir in *; do
     lower_dir=$(echo $dir | tr '[:upper:]' '[:lower:]')
