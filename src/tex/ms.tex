@@ -400,7 +400,7 @@ But first, we give a definition of complexity.
     \textbf{Complexity}:
     By default, complexity in \pysr is equal to the \textit{number of nodes in an expression tree}, regardless of each node's content.
 
-    However, complexity in \pysr is a completely user-configurable. We argue that the best definition for a ``simple'' expression is the one that is most interpretable by the user. An expression containing a dilogarithm may look commonplace to the particle physicist---and in fact be a great prior over the space of models for certain particle physics data---but extremely unusual to the fluid dynamicist, and perhaps not coincidentally a bad choice of prior for fluids data.
+    However, complexity in \pysr is completely user-configurable. We argue that the best definition for a ``simple'' expression is the one that is most interpretable by the user. An expression containing a dilogarithm may look commonplace to the particle physicist---and in fact be a great prior over the space of models for certain particle physics data---but extremely unusual to the fluid dynamicist, and perhaps not coincidentally a bad choice of prior for fluids data.
 }
 
 \noindent The traditional mechanism for penalizing complexity would be to use a constant \textit{parsimony}, which would involve adding a loss term equal to the complexity of an expression times a constant factor:
