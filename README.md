@@ -36,10 +36,6 @@ You can also fork the repository, enable GitHub actions, and the build action wi
 
 [![](html/abstract_snapshot.png)](https://github.com/MilesCranmer/pysr_paper/raw/main-pdf/ms.pdf)
 
-<br><br><br>
-<br><br><br>
-<br><br><br>
-
 ---
 
 This is an open source scientific article created using the [showyourwork](https://github.com/showyourwork/showyourwork) workflow.
