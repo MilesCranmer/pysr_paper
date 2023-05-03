@@ -249,7 +249,7 @@ output_table = "\n".join(output_table)
 # output_table = output_table.replace(
 #     r"SR Distillation$\ast$", "Symbolic Distillation" + r"$\ast$")
 output_table = output_table.replace(
-    r"SR Distillation$\ast$", "\\begin{tabular}{@{}c@{}}Symolic \\\\ Distillation" + r"$\ast$" + "\\end{tabular}")
+    r"SR Distillation$\ast$", "\\begin{tabular}{@{}c@{}}Symbolic \\\\ Distillation" + r"$\ast$" + "\\end{tabular}")
 
 output_table = output_table.replace(
     "virgolinImprovingModelbasedGenetic2021a", "virgolinImprovingModelbasedGenetic2021")
