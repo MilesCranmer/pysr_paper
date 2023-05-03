@@ -14,6 +14,9 @@
 <a href="https://github.com/MilesCranmer/pysr_paper/raw/main-pdf/ms.pdf" target="_blank">
 <img src="https://img.shields.io/badge/article-pdf-blue.svg?style=flat" alt="Read the article"/>
 </a>
+<a href="https://arxiv.org/abs/2305.01582">
+<img src="https://img.shields.io/badge/arXiv-2305.01582-b31b1b.svg" alt="arXiv"/>
+</a>
 </p>
 
 This repository holds the source code for the [PySR](https://github.com/MilesCranmer/PySR) & [SymbolicRegression.jl](https://github.com/MilesCranmer/SymbolicRegression.jl) paper,
