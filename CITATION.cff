@@ -7,4 +7,5 @@ authors:
 title: "Interpretable Machine Learning for Science with PySR & SymbolicRegression.jl"
 version: 1.0.0
 date-released: 2023-05-02
+doi: 10.48550/arXiv.2305.01582
 url: "https://github.com/MilesCranmer/pysr_paper"
