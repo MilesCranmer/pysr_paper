@@ -572,27 +572,27 @@ $i \gets$ random choice of $ 1, \ldots, 8$ weighted by $w_1, \ldots, w_8$\;
             \If{\Rand{} $< 0.5$}{
                 $a \gets -a$
             }
-            multiply random constant in $E$ by $a$
+            multiply random constant in $E^\ast$ by $a$
         }
         \Case(\algcomment{mutate operator}){$2$}{
-            randomly replace an operator in $E$ with\\
+            randomly replace an operator in $E^\ast$ with\\
             \ \ an operator of the same degree
         }
         \Case(\algcomment{append/prepend node}){$3$}{
-            add random node to root or leaf of $E$
+            add random node to root or leaf of $E^\ast$
         }
         \Case(\algcomment{insert node}){$4$}{
-            insert a random node inside $E$
+            insert a random node inside $E^\ast$
         }
         \Case(\algcomment{delete subtree}){$5$}{
-            replace a node and its children from $E$\\
+            replace a node and its children from $E^\ast$\\
             \ \ with a constant or variable
         }
         \Case(\algcomment{simplify tree}){$6$}{
-            simplify $E$
+            simplify $E^\ast$
         }
         \Case(\algcomment{new tree entirely}){$7$}{
-            $E \gets $ random expression
+            $E^\ast \gets $ random expression
         }
         \Case(\algcomment{no mutation}){$8$}{
             do nothing
