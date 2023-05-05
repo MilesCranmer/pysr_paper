@@ -5,10 +5,7 @@ The code in this folder was used to create the animations in
 
 ## How to run
 
-First, make sure you have PySR installed.
-Follow the instructions [here](https://github.com/MilesCranmer/PySR#installation)
-(I recommend the `pip` installation method).
-Then, install Python dependencies (including `manim`) in a new
+First, install Python dependencies (including `manim` and `pysr`) in a new
 virtual environment with:
 
 ```bash
@@ -17,7 +14,13 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Then, install Julia dependencies with:
+Then, install the Julia dependencies with:
+
+```bash
+python -c 'import pysr; pysr.install()'
+```
+
+then, initiate the local Julia environment with:
 
 ```bash
 julia --project=. -e 'using Pkg; Pkg.instantiate()'
