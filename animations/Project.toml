@@ -1,5 +1,4 @@
 [deps]
-JuliaFormatter = "98e50ef6-434e-11e9-1051-2b60c6c9e899"
 Optim = "429524aa-4258-5aef-a3af-852621145aeb"
 PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
 SymbolicRegression = "8254be44-1295-4e6a-a16d-46603ac705cb"
