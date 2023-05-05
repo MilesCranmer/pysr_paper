@@ -35,3 +35,6 @@ where `SCENE` is one of `TrigScene`, `ReluScene`, and `AbsScene`.
 
 The rest of the work was in Adobe After Effects to move
 diagrams around and add the `glow` effect to make the look more striking.
+
+The diagrams in the paper are found in [this file](https://github.com/MilesCranmer/pysr_paper/blob/main/src/static/pysr_diagram_v6.pdf)
+which are raw vector diagrams and editable in Adobe Illustrator (all the figures are in a single PDF).
