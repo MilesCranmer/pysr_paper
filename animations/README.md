@@ -1,0 +1,37 @@
+# Animations
+
+The code in this folder was used to create the animations in
+[this tweet](https://twitter.com/MilesCranmer/status/1654169022852894721?s=20).
+
+## How to run
+
+First, make sure you have PySR installed.
+Follow the instructions [here](https://github.com/MilesCranmer/PySR#installation)
+(I recommend the `pip` installation method).
+Then, install Python dependencies (including `manim`) in a new
+virtual environment with:
+
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+Then, install Julia dependencies with:
+
+```bash
+julia --project=. -e 'using Pkg; Pkg.instantiate()'
+```
+
+Then, you can create the animations with, for example:
+
+```bash
+python -m manim -r 1980,1080 --fps=30 main.py [SCENE]
+```
+
+where `SCENE` is one of `TrigScene`, `ReluScene`, and `AbsScene`.
+
+## Post-processing
+
+The rest of the work was in Adobe After Effects to move
+diagrams around and add the `glow` effect to make the look more striking.
