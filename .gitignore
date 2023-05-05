@@ -36,3 +36,4 @@ hall_of_fame*
 **/slurm*.csh
 **/slurm*.sh
 benchmark/results
+animations/venv
