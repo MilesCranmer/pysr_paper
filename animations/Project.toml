@@ -2,3 +2,6 @@
 Optim = "429524aa-4258-5aef-a3af-852621145aeb"
 PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
 SymbolicRegression = "8254be44-1295-4e6a-a16d-46603ac705cb"
+
+[compat]
+SymbolicRegression = "0.17.1"
