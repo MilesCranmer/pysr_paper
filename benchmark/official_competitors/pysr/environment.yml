@@ -1,0 +1,5 @@
+name: pysr
+channels:
+    - conda-forge
+dependencies:
+    - pysr==0.11.0
