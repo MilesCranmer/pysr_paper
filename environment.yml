@@ -8,7 +8,6 @@ dependencies:
   - python=3.9
   - pandas=1.4.1
   - matplotlib==3.5.1
-  - pip:
-      - pyyaml==5.4.1
-      - mpmath==1.2.1
-      - openpyxl==3.0.9
+  - pyyaml==5.4.1
+  - mpmath==1.2.1
+  - openpyxl==3.0.9
