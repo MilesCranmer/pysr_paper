@@ -18,6 +18,7 @@
 
 \usepackage{savesym}
 
+\usepackage[switch]{lineno}
 
 
 
@@ -128,7 +129,9 @@
 \newcommand{\todo}[1]{{\color{red} #1}}
 
 
-\usepackage{cleveref} \begin{document}
+\usepackage{cleveref}
+\begin{document}
+
 \newcommand\myhref[2]{\textsf{\textcolor{blue}{\href{#1}{#2}}}}
 \newcommand\giturl{\myhref{https://github.com/MilesCranmer/pysr_paper}{github.com/MilesCranmer/pysr\_paper}}
 
@@ -141,7 +144,7 @@
     }
     \hspace{2in}
     \parbox{0.3\textwidth}{
-        \giturl
+        \hphantom{\giturl}
         \hfill
     }
     \end{center}
@@ -151,7 +154,7 @@
 \author[1,2]{Miles Cranmer}
 \affil[1]{Princeton University, Princeton, NJ, USA}
 \affil[2]{Flatiron Institute, New York, NY, USA}
-\date{May 2, 2023}
+\date{}
 
 
 
@@ -164,7 +167,7 @@
 \pysr's internal search algorithm is a multi-population evolutionary algorithm, which consists of a unique evolve-simplify-optimize loop, designed for optimization of unknown scalar constants in newly-discovered empirical expressions.
 \pysr's backend is an extremely optimized Julia library \pysrjlabs\footnotemark{},
 which can be used directly from Julia. It is capable of fusing user-defined operators into SIMD kernels at runtime, performing automatic differentiation, and distributing populations of expressions to thousands of cores across a cluster.
-In describing this software, we also introduce a new benchmark, ``\textit{EmpiricalBench},’’ to quantify the applicability of symbolic regression algorithms in science.
+In describing this software, we also introduce a new benchmark, ``\textit{EmpiricalBench},'' to quantify the applicability of symbolic regression algorithms in science.
 This benchmark measures recovery of historical empirical equations from original and synthetic datasets.
 \end{abstract}
 \end{@twocolumnfalse}
@@ -178,7 +181,7 @@ This benchmark measures recovery of historical empirical equations from original
 
 
 
-
+\begin{linenumbers}
 
 
 \section{Introduction}
@@ -1075,8 +1078,9 @@ Marco Virgolin for extremely helpful comments on a draft of this paper, as well 
 Bill La Cava for providing feedback as well as spearheading the SRBench initiative, along with the rest of the SRBench organizers;
 Brenden Petersen for feedback on \pysr as well as providing insights discussions about the SR landscape;
 and so many others who have provided support to the project through email, Twitter, GitHub issues, and in-person.
-I am blown away by the community that is forming around \pysr and the positive feedback it has received. Thank you.
+% I am blown away by the community that is forming around \pysr and the positive feedback it has received. Thank you.
 
+\end{linenumbers}
 
 
 \bibliographystyle{unsrt85}
